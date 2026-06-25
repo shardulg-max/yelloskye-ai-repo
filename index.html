@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YelloSKYE — Master AI Use Case & Sales Repository</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap');
+  :root { --yellow: #FFF200; --black: #0D0D0D; --gray-100: #F0F0F0; --gray-200: #D8D8D8; --gray-400: #8A8A8A; --gray-600: #4A4A4A; --blue: #238DBB; }
+  body { font-family: 'Montserrat', sans-serif; background: #FFF; color: var(--black); padding: 40px; font-size: 13px; line-height: 1.6; max-width: 1200px; margin: 0 auto; }
+  .header { border-bottom: 4px solid var(--black); padding-bottom: 20px; margin-bottom: 30px; }
+  h1 { font-weight: 800; font-size: 32px; margin: 0 0 10px 0; letter-spacing: -1px; }
+  .subtext { color: var(--gray-600); font-size: 14px; max-width: 800px; }
+  
+  /* Search Bar */
+  .search-container { margin-bottom: 40px; position: sticky; top: 20px; z-index: 100; }
+  #searchInput { width: 100%; padding: 18px 24px; font-size: 16px; font-weight: 600; border: 3px solid var(--black); border-radius: 4px; font-family: inherit; box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: border-color 0.2s; }
+  #searchInput:focus { outline: none; border-color: var(--blue); }
+  
+  /* Use Case Card */
+  .use-case-card { border: 1px solid var(--gray-200); margin-bottom: 24px; border-radius: 4px; overflow: hidden; background: #FFF; }
+  .uc-header { background: var(--black); color: #FFF; padding: 16px 24px; display: flex; justify-content: space-between; align-items: baseline; }
+  .uc-title { font-size: 18px; font-weight: 700; margin: 0; }
+  .uc-id { color: var(--yellow); font-family: monospace; font-weight: 800; font-size: 14px; }
+  
+  /* AI Metadata Block */
+  .ai-metadata { background: var(--gray-100); padding: 16px 24px; border-bottom: 1px solid var(--gray-200); font-size: 11px; }
+  .meta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-bottom: 12px; }
+  .meta-item strong { display: block; color: var(--gray-600); text-transform: uppercase; letter-spacing: 1px; font-size: 9px; margin-bottom: 4px; }
+  .deep-tags { font-family: monospace; color: var(--blue); line-height: 1.8; }
+  .tag { display: inline-block; background: #FFF; border: 1px solid var(--gray-200); padding: 2px 6px; border-radius: 2px; margin: 2px 4px 2px 0; color: var(--black); font-weight: 600;}
+
+  /* Full Content Dropdown */
+  details { padding: 16px 24px; background: #FFF; }
+  summary { font-weight: 700; cursor: pointer; color: var(--black); outline: none; margin-bottom: 12px; font-size: 14px; }
+  summary:hover { color: var(--blue); }
+  .content-body { padding: 24px; background: #FAFAFA; border-left: 4px solid var(--yellow); font-size: 13px; white-space: pre-wrap; font-family: monospace; color: #333; overflow-x: auto; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>YelloSKYE Master AI Use Case Repository</h1>
+  <div class="subtext"><strong>AI INSTRUCTIONS:</strong> This document is the central knowledge base for YelloSKYE use cases. When requested to draft sales copy, emails, or proposals, scan the <code>&lt;ai-metadata&gt;</code> blocks below. Extract the verified metrics, and utilize the full text stored in the <code>&lt;div class="content-body"&gt;</code>. Maintain the authoritative, zero-negativity brand tone in all outputs.</div>
+</div>
+
+<div class="search-container">
+  <input type="text" id="searchInput" placeholder="🔍 Search tags, keywords, modules, or personas (e.g., 'Survey IQ', 'Developer', 'thermal')..." onkeyup="filterUseCases()">
+</div>
+
+<div class="use-case-card">
+  <div class="uc-header"><h2 class="uc-title">Establishing a Shared Reality Across Multi-Tower Developments</h2><span class="uc-id">UC-01</span></div>
+  <div class="ai-metadata">
+    <div class="meta-grid">
+      <div class="meta-item"><strong>Industry</strong> <span class="tag">Real Estate</span> <span class="tag">Residential</span></div>
+      <div class="meta-item"><strong>Module</strong> <span class="tag">Construct IQ</span> <span class="tag">DEX Platform</span></div>
+      <div class="meta-item"><strong>Persona</strong> <span class="tag">PMO</span> <span class="tag">Developer</span></div>
+      <div class="meta-item"><strong>Verified Metrics</strong> 80% fewer site visits, 33% manpower saved</div>
+    </div>
+    <div class="meta-item"><strong>AI Deep Search Tags</strong> <span class="deep-tags">multi-tower progress tracking, high-rise drone monitoring, residential digital twin, conflicting updates, execution clarity, site visibility.</span></div>
+  </div>
+  <details><summary>View Full End-to-End Copy</summary><div class="content-body">> ### Executive Summary
+> * **The Context:** Managing multi-tower mega-projects generates fragmented data. Relying on isolated photo updates and interpreted reports creates conflicting narratives between the site and boardroom.
+> * **The Solution:** Deploying Construct IQ to fuse fortnightly drone captures and fixed camera feeds into one unified DEX dashboard, creating a live digital twin of all simultaneous builds.
+> * **The ROI:** Achieving 80% fewer site visits, saving 33% in manual reporting manpower, and establishing absolute execution clarity for all stakeholders.
+
+## Elevating Portfolio Visibility
+For Real Estate Developers and PMO Directors, managing a massive, multi-tower development requires absolute execution clarity. When progress is tracked via manual WhatsApp photos and disjointed spreadsheets, leadership is forced to make multi-million-dollar decisions based on interpretation rather than fact.
+
+Today, industry leaders are upgrading to a unified standard. By implementing automated aerial intelligence, development teams command a comprehensive, live digital twin of their entire site.
+
+## The Shared Reality Workflow
+1. **Automated Capture:** Drones capture the exterior progress of all towers in a single flight, while fixed cameras monitor critical zones.
+2. **Unified Dashboarding:** Data is stitched into the DEX platform, allowing PMOs to verify the exact status of slab casting and core wall progression remotely.
+3. **Unarguable Alignment:** Every stakeholder looks at the exact same visual reality.
+
+---
+> ### Ready to Upgrade Your Workflow?
+> See how tier-1 developers track 6 simultaneous towers in a single dashboard.
+> 👉 [**Book a 15-Minute Walkthrough**](/book-demo)</div></details>
+</div>
+
+<div class="use-case-card">
+  <div class="uc-header"><h2 class="uc-title">Protecting Margins: Visual Ground Truth for Contractor Billing</h2><span class="uc-id">UC-02</span></div>
+  <div class="ai-metadata">
+    <div class="meta-grid">
+      <div class="meta-item"><strong>Industry</strong> <span class="tag">Real Estate</span> <span class="tag">Commercial</span></div>
+      <div class="meta-item"><strong>Module</strong> <span class="tag">Construct IQ</span></div>
+      <div class="meta-item"><strong>Persona</strong> <span class="tag">Developer</span> <span class="tag">CXO</span></div>
+      <div class="meta-item"><strong>Verified Metrics</strong> Zero billing disputes, elimination of overpayment</div>
+    </div>
+    <div class="meta-item"><strong>AI Deep Search Tags</strong> <span class="deep-tags">contractor billing validation, construction RA bill dispute, visual ground truth, payment authorization, financial leakage.</span></div>
+  </div>
+  <details><summary>View Full End-to-End Copy</summary><div class="content-body">> ### Executive Summary
+> * **The Context:** Developers routinely process multi-million dollar RA bills based on subjective progress claims, leading to overpayment for incomplete work.
+> * **The Solution:** Utilizing Construct IQ to capture a timestamped aerial digital twin aligned with the contractor's billing cycle, instantly verifying physical progress against claimed line items.
+> * **The ROI:** Zero contractor billing disputes, absolute margin protection, and the complete elimination of financial leakage.
+
+## Securing Capital Deployment
+Approving Running Account (RA) bills without an unarguable visual record exposes developers to massive financial risk. Contractors naturally optimize their billing, and without independent verification, teams overpay for milestones that have not been fully achieved on site.
+
+## The Verification Workflow
+1. **Synchronized Capture:** Drone flights are scheduled exactly 24 hours prior to the RA billing cutoff date.
+2. **Visual Auditing:** Quantity surveyors overlay the contractor's claims directly onto the high-resolution orthomosaic and 3D model.
+3. **Authorized Payment:** Discrepancies are instantly flagged and rejected with visual proof. Only verified ground truth is funded.
+
+---
+> ### Ready to Upgrade Your Workflow?
+> Stop paying for unverified progress. Secure your billing cycles today.
+> 👉 [**Book a 15-Minute Walkthrough**](/book-demo)</div></details>
+</div>
+
+<div class="use-case-card">
+  <div class="uc-header"><h2 class="uc-title">Accelerating Interior Fit-Outs with 360° Digital Twins</h2><span class="uc-id">UC-03</span></div>
+  <div class="ai-metadata">
+    <div class="meta-grid">
+      <div class="meta-item"><strong>Industry</strong> <span class="tag">Real Estate</span> <span class="tag">Interiors</span></div>
+      <div class="meta-item"><strong>Module</strong> <span class="tag">Studio IQ</span></div>
+      <div class="meta-item"><strong>Persona</strong> <span class="tag">PMO</span> <span class="tag">Quality Control</span></div>
+      <div class="meta-item"><strong>Verified Metrics</strong> 40% faster issue closure, zero blind spots</div>
+    </div>
+    <div class="meta-item"><strong>AI Deep Search Tags</strong> <span class="deep-tags">interior fit out tracking, 360 camera construction documentation, interior MEP validation, drywall closure, remote site walkthrough.</span></div>
+  </div>
+  <details><summary>View Full End-to-End Copy</summary><div class="content-body">> ### Executive Summary
+> * **The Context:** Interior fit-outs move fast. MEP installations get covered by drywall before validation, leading to massive rework costs when defects surface late.
+> * **The Solution:** Utilizing 360° cameras and Studio IQ to capture continuous interior walkthroughs, creating a timestamped, navigable record of every room.
+> * **The ROI:** Achieving 40% faster issue closure and completely eliminating internal blind spots by verifying MEP networks before walls are closed.
+
+## Commanding the Interior Build
+For PMOs managing complex interiors, visibility plummets once the shell is complete. Relying on periodic manual walkthroughs means critical mechanical and electrical placements are often enclosed before they can be verified against the design.
+
+## The 360° Intelligence Workflow
+1. **Rapid Walkthroughs:** Personnel walk the floor with a hardhat-mounted 360° camera, passively capturing the entire environment.
+2. **Automated Mapping:** The platform automatically maps the imagery to the corresponding floor plan.
+3. **Pre-Closure Verification:** Engineers remotely verify MEP installations, giving the green light for drywall installation with absolute certainty.
+
+---
+> ### Ready to Upgrade Your Workflow?
+> See how elite PMOs manage 500-unit interiors without leaving the office.
+> 👉 [**Book a 15-Minute Walkthrough**](/book-demo)</div></details>
+</div>
+
+<div class="use-case-card">
+  <div class="uc-header"><h2 class="uc-title">Elevating Off-Plan Sales with Pre-Construction Intelligence</h2><span class="uc-id">UC-04</span></div>
+  <div class="ai-metadata">
+    <div class="meta-grid">
+      <div class="meta-item"><strong>Industry</strong> <span class="tag">Real Estate</span> <span class="tag">Marketing</span></div>
+      <div class="meta-item"><strong>Module</strong> <span class="tag">Studio IQ</span></div>
+      <div class="meta-item"><strong>Persona</strong> <span class="tag">Marketing Dir.</span> <span class="tag">Sales Head</span></div>
+      <div class="meta-item"><strong>Verified Metrics</strong> 3x faster conversions, higher pre-launch premiums</div>
+    </div>
+    <div class="meta-item"><strong>AI Deep Search Tags</strong> <span class="deep-tags">pre construction property marketing, view from floor, off-plan real estate sales, luxury buyer trust, rendering vs reality, 360 panoramas.</span></div>
+  </div>
+  <details><summary>View Full End-to-End Copy</summary><div class="content-body">> ### Executive Summary
+> * **The Context:** Selling high-ticket luxury real estate before the tower is built requires overcoming buyer hesitation regarding actual views and surroundings.
+> * **The Solution:** Deploying high-altitude drones via Studio IQ to capture 360° panoramas at exact future floor heights, proving the "View-from-Floor" before concrete is poured.
+> * **The ROI:** Accelerating off-plan sales cycles by 3x, commanding premium pricing for higher floors based on verified visual data.
+
+## Proving the Premium
+Luxury buyers no longer trust CGI renders. To justify premium pricing on the 40th floor of an unbuilt tower, sales teams must provide unarguable proof of the sightlines. 
+
+## The View-From-Floor Workflow
+1. **Precision Altitude Flights:** Drones fly to the exact GPS coordinates and altimeter heights of future balconies.
+2. **Panoramic Stitching:** High-resolution sensors capture full 360-degree environmental vistas.
+3. **Sales Center Integration:** The live panoramas are embedded directly into the developer's tablet or VR sales suite, allowing buyers to look out the window of a unit that doesn't exist yet.
+
+---
+> ### Ready to Upgrade Your Workflow?
+> Arm your sales team with verified visual proof. 
+> 👉 [**Book a 15-Minute Walkthrough**](/book-demo)</div></details>
+</div>
+
+<div class="use-case-card">
+  <div class="uc-header"><h2 class="uc-title">Commanding Due Diligence: Drone Surveying for Land Acquisitions</h2><span class="uc-id">UC-05</span></div>
+  <div class="ai-metadata">
+    <div class="meta-grid">
+      <div class="meta-item"><strong>Industry</strong> <span class="tag">Real Estate</span> <span class="tag">Land</span></div>
+      <div class="meta-item"><strong>Module</strong> <span class="tag">Survey IQ</span></div>
+      <div class="meta-item"><strong>Persona</strong> <span class="tag">Developer</span> <span class="tag">Acquisition</span></div>
+      <div class="meta-item"><strong>Verified Metrics</strong> 5x faster due diligence, 99.9% geometric accuracy</div>
+    </div>
+    <div class="meta-item"><strong>AI Deep Search Tags</strong> <span class="deep-tags">drone land surveying for real estate development, boundary mapping, pre construction land acquisition, topographic survey, cadastral overlay.</span></div>
+  </div>
+  <details><summary>View Full End-to-End Copy</summary><div class="content-body">> ### Executive Summary
+> * **The Context:** Evaluating multi-million dollar land acquisitions requires absolute clarity regarding usable acreage, physical boundaries, and topographical viability before capital is committed.
+> * **The Solution:** Deploying Survey IQ to execute rapid, high-altitude aerial mapping, generating millimeter-accurate orthomosaics and digital terrain models during the due diligence phase.
+> * **The ROI:** Accelerating due diligence timelines by 5x, achieving 99.9% geometric accuracy, and providing unarguable visual proof required to finalize acquisitions.
+
+## Elevating Land Acquisition Intelligence
+For Real Estate Developers, securing prime land is the foundation of portfolio expansion. Relying on outdated government cadastral maps or localized broker estimations introduces massive financial risk.
+
+## Accelerated Due Diligence with Survey IQ
+1. **High-Speed Aerial Capture:** Drones execute automated flight grids over the target parcel.
+2. **Cadastral Overlay:** Engineering teams overlay legal boundary coordinates directly onto the live map to confirm usable acreage.
+3. **Topographical Baselining:** The platform generates Digital Elevation Models (DEM) to evaluate natural slopes before the design phase begins.
+
+---
+> ### Ready to Upgrade Your Workflow?
+> See how leading developers verify 500-acre parcels in days.
+> 👉 [**Book a 15-Minute Walkthrough**](/book-demo)</div></details>
+</div>
+
+<div class="use-case-card">
+  <div class="uc-header"><h2 class="uc-title">Preventing Rework: As-Built vs. BIM Clash Detection</h2><span class="uc-id">UC-06</span></div>
+  <div class="ai-metadata">
+    <div class="meta-grid">
+      <div class="meta-item"><strong>Industry</strong> <span class="tag">Real Estate</span> <span class="tag">EPC</span></div>
+      <div class="meta-item"><strong>Module</strong> <span class="tag">BIM IQ</span></div>
+      <div class="meta-item"><strong>Persona</strong> <span class="tag">ENG</span> <span class="tag">BIM Manager</span></div>
+      <div class="meta-item"><strong>Verified Metrics</strong> Zero downstream rework, exact CAD alignment</div>
+    </div>
+    <div class="meta-item"><strong>AI Deep Search Tags</strong> <span class="deep-tags">scan to bim clash detection, as built vs design deviation, construction deviation analysis, structural misalignment, late stage rework.</span></div>
+  </div>
+  <details><summary>View Full End-to-End Copy</summary><div class="content-body">> ### Executive Summary
+> * **The Context:** When structural execution deviates from the 3D design model, it creates a cascading failure of misaligned MEP systems and costly late-stage rework.
+> * **The Solution:** Using BIM IQ to overlay high-fidelity point clouds of the physical site directly onto the Navisworks/Revit design model.
+> * **The ROI:** Eliminating downstream rework costs, enforcing absolute contractor adherence to design, and catching micro-deviations before concrete cures.
+
+## Securing Design Integrity
+A master-planned BIM model is useless if the site contractor deviates from the coordinates by three inches. Catching that deviation during the structural phase saves thousands; catching it during the MEP phase costs millions.
+
+## The Clash Detection Workflow
+1. **Laser & Drone Scanning:** High-fidelity LiDAR and photogrammetry capture the exact as-built conditions of the physical slab or structure.
+2. **Digital Overlay:** The as-built point cloud is aligned exactly over the federated BIM model.
+3. **Automated Flagging:** BIM IQ generates a heat map of geometric deviations, instantly highlighting clashes for the engineering team to rectify immediately.
+
+---
+> ### Ready to Upgrade Your Workflow?
+> Stop paying for late-stage rework. Verify your structures today.
+> 👉 [**Book a 15-Minute Walkthrough**](/book-demo)</div></details>
+</div>
+
+<div class="use-case-card">
+  <div class="uc-header"><h2 class="uc-title">Commanding the Corridor: Linear Infrastructure Monitoring</h2><span class="uc-id">UC-07</span></div>
+  <div class="ai-metadata">
+    <div class="meta-grid">
+      <div class="meta-item"><strong>Industry</strong> <span class="tag">Infrastructure</span> <span class="tag">EPC</span></div>
+      <div class="meta-item"><strong>Module</strong> <span class="tag">Construct IQ</span></div>
+      <div class="meta-item"><strong>Persona</strong> <span class="tag">PMO</span> <span class="tag">Project Dir.</span></div>
+      <div class="meta-item"><strong>Verified Metrics</strong> 100% corridor visibility, 5x survey velocity</div>
+    </div>
+    <div class="meta-item"><strong>AI Deep Search Tags</strong> <span class="deep-tags">linear corridor mapping infrastructure, highway construction aerial mapping, right of way boundary precision, chainage wise analytics, continuous spatial data.</span></div>
+  </div>
+  <details><summary>View Full End-to-End Copy</summary><div class="content-body">> ### Executive Summary
+> * **The Context:** Managing progress across a 50km infrastructure corridor relies on fragmented reporting, leading to massive blind spots regarding Right-of-Way (RoW) clearing and paving.
+> * **The Solution:** Deploying long-range drone configurations via Construct IQ to generate unbroken, geo-referenced orthomosaics and chainage-wise progress dashboards.
+> * **The ROI:** Achieving 100% continuous corridor visibility, verifying contractor milestones remotely, and establishing authority-credible historical archives for compliance.
+
+## Eliminating the Distance Blind Spot
+For EPC Project Directors building highways or railways, physically driving the site to verify contractor progress is impossible. You lose visibility across massive distances, and progress reports arrive days late. 
+
+## The Linear Tracking Workflow
+1. **Unbroken Aerial Mapping:** Fixed-wing or high-endurance drones map miles of the corridor continuously.
+2. **Chainage-Specific Analytics:** The DEX platform segments the map by exact chainage points, allowing PMOs to review specific kilometers instantly.
+3. **Cross-Front Verification:** Compare earthwork, grading, and paving progress simultaneously across multiple active work fronts from headquarters.
+
+---
+> ### Ready to Upgrade Your Workflow?
+> See how top PMOs monitor 50km infrastructure corridors in a single dashboard.
+> 👉 [**Book a 15-Minute Walkthrough**](/book-demo)</div></details>
+</div>
+
+<div class="use-case-card">
+  <div class="uc-header"><h2 class="uc-title">Ending the Dirt Dispute: Auditable Earthwork Volumetrics</h2><span class="uc-id">UC-08</span></div>
+  <div class="ai-metadata">
+    <div class="meta-grid">
+      <div class="meta-item"><strong>Industry</strong> <span class="tag">Infrastructure</span> <span class="tag">Mining</span></div>
+      <div class="meta-item"><strong>Module</strong> <span class="tag">Survey IQ</span></div>
+      <div class="meta-item"><strong>Persona</strong> <span class="tag">ENG</span> <span class="tag">Commercial Head</span></div>
+      <div class="meta-item"><strong>Verified Metrics</strong> 99.9% accuracy, zero cut/fill disputes</div>
+    </div>
+    <div class="meta-item"><strong>AI Deep Search Tags</strong> <span class="deep-tags">auditable earthwork volume calculation drone, drone cut and fill calculation, construction volumetric surveying, dirt hauling costs, earthwork overruns.</span></div>
+  </div>
+  <details><summary>View Full End-to-End Copy</summary><div class="content-body">> ### Executive Summary
+> * **The Context:** Earthwork dictates the initial project schedule. Relying on manual cross-section surveys takes weeks, causing data to go stale and leading to massive earthwork budget overruns.
+> * **The Solution:** Utilizing Survey IQ to execute rapid aerial topography, automatically generating 3D DEM models and indisputable cut/fill volumetric analytics.
+> * **The ROI:** Transitioning billing from negotiation to a math equation, achieving 5x faster survey turnarounds, and optimizing onsite material movement to eliminate external hauling costs.
+
+## Securing the Ground Baseline
+Moving dirt is the highest variable cost in early construction. When contractors calculate removed volume using outdated grid methodologies, developers overpay for haulage. 
+
+## The Volumetric Workflow
+1. **Drone Topography:** Automated flights capture thousands of data points across the excavated terrain.
+2. **Baseline Comparison:** The platform compares the current surface model directly against the original baseline or final design grade.
+3. **Automated BOQ:** Exact cut, fill, and net volume calculations are generated instantly, providing an unarguable mathematical proof for the contractor's invoice.
+
+---
+> ### Ready to Upgrade Your Workflow?
+> Calculate massive cut/fill volumes in hours, not weeks.
+> 👉 [**Book a 15-Minute Walkthrough**](/book-demo)</div></details>
+</div>
+
+<div class="use-case-card">
+  <div class="uc-header"><h2 class="uc-title">Master Planning Confidence: Terrain & Flood Risk Mapping</h2><span class="uc-id">UC-09</span></div>
+  <div class="ai-metadata">
+    <div class="meta-grid">
+      <div class="meta-item"><strong>Industry</strong> <span class="tag">Infrastructure</span> <span class="tag">Govt</span></div>
+      <div class="meta-item"><strong>Module</strong> <span class="tag">Survey IQ</span></div>
+      <div class="meta-item"><strong>Persona</strong> <span class="tag">ENG</span> <span class="tag">Urban Planner</span></div>
+      <div class="meta-item"><strong>Verified Metrics</strong> 5x survey speed, sub-centimeter topographical precision</div>
+    </div>
+    <div class="meta-item"><strong>AI Deep Search Tags</strong> <span class="deep-tags">drone topographic mapping terrain analysis, flood risk assessment drone survey, natural slope analysis, water accumulation, drainage master planning.</span></div>
+  </div>
+  <details><summary>View Full End-to-End Copy</summary><div class="content-body">> ### Executive Summary
+> * **The Context:** Developing heavy infrastructure requires precise knowledge of natural slopes, drainage paths, and potential flood risks before earthwork begins.
+> * **The Solution:** High-speed aerial surveying captures millimeter-accurate Digital Terrain Models (DTM), allowing engineers to simulate water accumulation and slope stability natively.
+> * **The ROI:** Securing environmental approvals faster, eliminating design-phase topographical errors, and ensuring massive capital is not deployed on compromised terrain.
+
+## Validating the Topography
+Relying on legacy satellite data or sparse ground surveys for massive township or infrastructure planning is dangerous. A missed slope variation can lead to catastrophic flooding or massive unplanned grading costs.
+
+## The Terrain Intelligence Workflow
+1. **Dense Topographic Capture:** Drones map the raw terrain, stripping away vegetation virtually to reveal bare-earth models.
+2. **Hydrological Simulation:** Survey IQ algorithms analyze the elevation data to predict natural water flow and accumulation zones.
+3. **Secure Master Planning:** Civil engineers use the verified CAD-ready terrain data to design perfect drainage systems before ground is ever broken.
+
+---
+> ### Ready to Upgrade Your Workflow?
+> Base your master plans on verified topographical ground truth.
+> 👉 [**Book a 15-Minute Walkthrough**](/book-demo)</div></details>
+</div>
+
+<div class="use-case-card">
+  <div class="uc-header"><h2 class="uc-title">Streamlining Delivery with Digital Handover Documentation</h2><span class="uc-id">UC-10</span></div>
+  <div class="ai-metadata">
+    <div class="meta-grid">
+      <div class="meta-item"><strong>Industry</strong> <span class="tag">Warehousing</span> <span class="tag">Industrial</span></div>
+      <div class="meta-item"><strong>Module</strong> <span class="tag">DEX Platform</span></div>
+      <div class="meta-item"><strong>Persona</strong> <span class="tag">Facility Operator</span> <span class="tag">DEV</span></div>
+      <div class="meta-item"><strong>Verified Metrics</strong> Zero handover disputes, 70% fewer site visits</div>
+    </div>
+    <div class="meta-item"><strong>AI Deep Search Tags</strong> <span class="deep-tags">warehouse construction handover documentation, industrial asset digital twin, facility lifecycle archive, post-handover disputes, pre-delivery inspections.</span></div>
+  </div>
+  <details><summary>View Full End-to-End Copy</summary><div class="content-body">> ### Executive Summary
+> * **The Context:** Delivering massive industrial parks requires a highly transparent, verifiable transfer of asset data from the developer to the operating entity to avoid disputes.
+> * **The Solution:** Utilizing the DEX platform to anchor a continuous visual history—from foundational earthwork to mechanical commissioning—into a single handover package.
+> * **The ROI:** Achieving zero post-handover documentation disputes and reducing physical pre-delivery inspection timelines by 70%.
+
+## Elevating the Standard of Asset Transfer
+For industrial developers, the true success of a project is realized during the transition phase. To ensure operational readiness, the delivery team must provide a verified record of the physical space.
+
+## The Handover Optimization Workflow
+1. **Continuous Visual Mapping:** Drones and 360° cameras log progress across all zones throughout construction.
+2. **Unified Data Centralization:** Every timestamped aerial map and interior walkthrough is structured inside the DEX platform.
+3. **Secure Operator Onboarding:** Developers provide the incoming operator with role-based access to the complete digital twin to inspect the historical ground truth.
+
+---
+> ### Ready to Upgrade Your Workflow?
+> See how top developers eliminate handover disputes with digital twins.
+> 👉 [**Book a 15-Minute Walkthrough**](/book-demo)</div></details>
+</div>
+
+<div class="use-case-card">
+  <div class="uc-header"><h2 class="uc-title">Targeting Revenue Leakage: Thermal Drone Inspections for Solar</h2><span class="uc-id">UC-11</span></div>
+  <div class="ai-metadata">
+    <div class="meta-grid">
+      <div class="meta-item"><strong>Industry</strong> <span class="tag">Renewables</span> <span class="tag">Solar</span></div>
+      <div class="meta-item"><strong>Module</strong> <span class="tag">Inspect IQ</span></div>
+      <div class="meta-item"><strong>Persona</strong> <span class="tag">O&M Manager</span> <span class="tag">Asset Owner</span></div>
+      <div class="meta-item"><strong>Verified Metrics</strong> 10x faster fault detection, exact GPS localization</div>
+    </div>
+    <div class="meta-item"><strong>AI Deep Search Tags</strong> <span class="deep-tags">solar farm thermal drone inspection, photovoltaic panel defect detection, utility scale solar O&M, radiometric thermal mapping, revenue leakage.</span></div>
+  </div>
+  <details><summary>View Full End-to-End Copy</summary><div class="content-body">> ### Executive Summary
+> * **The Context:** Manual inspections of massive utility-scale solar farms fail to catch micro-defects at scale, allowing silent string failures and diode anomalies to bleed power output.
+> * **The Solution:** Deploying Inspect IQ with radiometric thermal drone sensors to instantly map temperature variations, automatically highlighting underperforming PV panels.
+> * **The ROI:** Executing fault detection 10x faster than manual teams, isolating exact GPS coordinates of failures, and instantly recovering lost megawatt generation.
+
+## Commanding Solar Asset Performance
+Identifying faulty hardware is a massive geographical challenge. A single malfunctioning string degrades the overall output, yet locating that exact panel across thousands of rows manually takes weeks.
+
+## The Thermal Intelligence Workflow
+1. **Radiometric Aerial Capture:** Drones conduct high-speed flights, capturing visual and radiometric thermal data simultaneously.
+2. **Automated Anomaly Detection:** Intelligence algorithms map temperature signatures, automatically flagging hotspots that indicate bypassed diodes or shattered glass.
+3. **Targeted O&M Dispatch:** Ground crews receive a prioritized repair list with exact GPS coordinates.
+
+---
+> ### Ready to Upgrade Your Workflow?
+> See how elite O&M teams inspect 100MW sites in hours, not weeks.
+> 👉 [**Book a 15-Minute Walkthrough**](/book-demo)</div></details>
+</div>
+
+<div class="use-case-card">
+  <div class="uc-header"><h2 class="uc-title">Automated Facade & Industrial Asset Inspections</h2><span class="uc-id">UC-12</span></div>
+  <div class="ai-metadata">
+    <div class="meta-grid">
+      <div class="meta-item"><strong>Industry</strong> <span class="tag">Power</span> <span class="tag">Industrial</span></div>
+      <div class="meta-item"><strong>Module</strong> <span class="tag">Inspect IQ</span></div>
+      <div class="meta-item"><strong>Persona</strong> <span class="tag">O&M Director</span> <span class="tag">Facility Manager</span></div>
+      <div class="meta-item"><strong>Verified Metrics</strong> 75% inspection cost cut, Zero scaffolds needed</div>
+    </div>
+    <div class="meta-item"><strong>AI Deep Search Tags</strong> <span class="deep-tags">AI drone asset inspection, industrial facade monitoring, rope access replacement, scaffold safety risk, predictive maintenance, concrete wear detection.</span></div>
+  </div>
+  <details><summary>View Full End-to-End Copy</summary><div class="content-body">> ### Executive Summary
+> * **The Context:** Inspecting elevated industrial assets requires scaffolding, shutdowns, and severe safety risks to rope-access personnel.
+> * **The Solution:** Deploying drone fleets equipped with high-resolution RGB sensors to map the entire asset without a single person leaving the ground.
+> * **The ROI:** Achieving a 75% cut in inspection costs, completely eliminating scaffolding requirements, and ensuring 100% operational uptime during data capture.
+
+## Elevating Safety and Predictability
+For Facility Managers of massive industrial plants, visual inspections are traditionally reactive due to the extreme cost and danger of deploying human inspectors to elevated heights.
+
+## The Inspection Intelligence Workflow
+1. **Automated Structural Mapping:** Drones fly precise, repeatable orbits around chimney stacks, cooling towers, and facades.
+2. **AI Defect Detection:** Inspect IQ processes thousands of close-up images, using AI to automatically identify and classify concrete spalling, cracks, and rust by severity.
+3. **Preventative Maintenance:** O&M teams review the 3D model and annotated defect reports remotely, deploying repair teams only when and where absolutely necessary.
+
+---
+> ### Ready to Upgrade Your Workflow?
+> Stop risking personnel and capital on manual inspections.
+> 👉 [**Book a 15-Minute Walkthrough**](/book-demo)</div></details>
+</div>
+
+<div class="use-case-card">
+  <div class="uc-header"><h2 class="uc-title">The Executive Blind Spot: Standardizing Portfolio Ground Truth</h2><span class="uc-id">UC-13</span></div>
+  <div class="ai-metadata">
+    <div class="meta-grid">
+      <div class="meta-item"><strong>Industry</strong> <span class="tag">Cross-Industry</span></div>
+      <div class="meta-item"><strong>Module</strong> <span class="tag">DEX Platform</span></div>
+      <div class="meta-item"><strong>Persona</strong> <span class="tag">CXO</span> <span class="tag">Managing Director</span></div>
+      <div class="meta-item"><strong>Verified Metrics</strong> 90% reduction in disputes, Zero travel time for verification</div>
+    </div>
+    <div class="meta-item"><strong>AI Deep Search Tags</strong> <span class="deep-tags">construction portfolio monitoring dashboard, multi-site blind spot, executive progress reporting, centralized site intelligence, standardizing ground truth.</span></div>
+  </div>
+  <details><summary>View Full End-to-End Copy</summary><div class="content-body">> ### Executive Summary
+> * **The Context:** Overseeing a dozen active sites using unstandardized reports (Excel, WhatsApp, PDFs) creates a massive executive blind spot, forcing CXOs to decipher data rather than make decisions.
+> * **The Solution:** Centralizing every site into the YelloSKYE DEX Platform—a unified visual dashboard providing real-time, remote digital twins of the entire portfolio.
+> * **The ROI:** Reducing executive travel time to zero, cutting contractor disputes by 90% through unarguable visual proof, and spotting systemic delays weeks earlier.
+
+## Commanding at Scale
+For the CXO, construction does not fail on site—it fails in the lag between an event happening and leadership finding out about it. When every project manager reports differently, truth gets filtered.
+
+## The Portfolio Command Workflow
+1. **Standardized Capture:** All sites across the portfolio are mapped via drone or 360° cameras on a strict, synchronized schedule.
+2. **Unified Executive View:** The DEX Platform aggregates all sites onto a single map-based interface.
+3. **Instant Verification:** Leadership clicks into any specific project, floor, or zone to verify actual physical progress instantly, ensuring board-level decisions are backed by indisputable reality.
+
+---
+> ### Ready to Upgrade Your Workflow?
+> Command your entire portfolio from a single screen.
+> 👉 [**Book a 15-Minute Walkthrough**](/book-demo)</div></details>
+</div>
+
+<script>
+function filterUseCases() {
+  let input = document.getElementById('searchInput').value.toLowerCase();
+  let cards = document.getElementsByClassName('use-case-card');
+
+  for (let i = 0; i < cards.length; i++) {
+    let searchContent = cards[i].querySelector('.ai-metadata').innerText.toLowerCase() + 
+                        cards[i].querySelector('.uc-title').innerText.toLowerCase();
+
+    if (searchContent.includes(input)) {
+      cards[i].style.display = ""; 
+    } else {
+      cards[i].style.display = "none"; 
+    }
+  }
+}
+</script>
+</body>
+</html>
