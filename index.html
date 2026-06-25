@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>YelloSKYE — Master AI Use Case & Sales Repository</title>
+<title>YelloSKYE — Master AI Use Case &amp; Sales Repository</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap');
   :root { --yellow: #FFF200; --black: #0D0D0D; --gray-100: #F0F0F0; --gray-200: #D8D8D8; --gray-400: #8A8A8A; --gray-600: #4A4A4A; --blue: #238DBB; }
@@ -11,30 +11,47 @@
   .header { border-bottom: 4px solid var(--black); padding-bottom: 20px; margin-bottom: 30px; }
   h1 { font-weight: 800; font-size: 32px; margin: 0 0 10px 0; letter-spacing: -1px; }
   .subtext { color: var(--gray-600); font-size: 14px; max-width: 800px; }
-  
-  /* Search Bar */
-  .search-container { margin-bottom: 40px; position: sticky; top: 20px; z-index: 100; }
-  #searchInput { width: 100%; padding: 18px 24px; font-size: 16px; font-weight: 600; border: 3px solid var(--black); border-radius: 4px; font-family: inherit; box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: border-color 0.2s; }
+
+  .search-container { margin-bottom: 16px; position: sticky; top: 20px; z-index: 100; background: #FFF; padding-top: 8px; }
+  #searchInput { width: 100%; padding: 18px 24px; font-size: 16px; font-weight: 600; border: 3px solid var(--black); border-radius: 4px; font-family: inherit; box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: border-color 0.2s; box-sizing: border-box; }
   #searchInput:focus { outline: none; border-color: var(--blue); }
-  
-  /* Use Case Card */
+
+  .filter-bar { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; align-items: center; }
+  .filter-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--gray-400); margin-right: 4px; }
+  .filter-pill { font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 600; padding: 6px 14px; border-radius: 20px; border: 1.5px solid var(--gray-200); background: #FFF; color: var(--gray-600); cursor: pointer; transition: all 0.15s; }
+  .filter-pill:hover { border-color: var(--black); color: var(--black); }
+  .filter-pill.active { background: var(--black); border-color: var(--black); color: var(--yellow); }
+
+  .results-bar { display: flex; justify-content: space-between; align-items: center; margin: 18px 0 24px; padding-bottom: 14px; border-bottom: 1px solid var(--gray-200); }
+  .results-count { font-size: 12px; font-weight: 700; color: var(--gray-600); }
+  .results-count span { color: var(--blue); }
+  .clear-filters { font-size: 12px; font-weight: 600; color: var(--blue); cursor: pointer; background: none; border: none; text-decoration: underline; display: none; }
+  .clear-filters.visible { display: inline-block; }
+
+  .no-results { display: none; text-align: center; padding: 60px 20px; color: var(--gray-400); }
+  .no-results.visible { display: block; }
+  .no-results .nr-icon { font-size: 32px; margin-bottom: 10px; }
+  .no-results .nr-title { font-size: 15px; font-weight: 700; color: var(--gray-600); margin-bottom: 4px; }
+  .no-results .nr-sub { font-size: 13px; }
+
   .use-case-card { border: 1px solid var(--gray-200); margin-bottom: 24px; border-radius: 4px; overflow: hidden; background: #FFF; }
-  .uc-header { background: var(--black); color: #FFF; padding: 16px 24px; display: flex; justify-content: space-between; align-items: baseline; }
+  .uc-header { background: var(--black); color: #FFF; padding: 16px 24px; display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
   .uc-title { font-size: 18px; font-weight: 700; margin: 0; }
-  .uc-id { color: var(--yellow); font-family: monospace; font-weight: 800; font-size: 14px; }
-  
-  /* AI Metadata Block */
+  .uc-id { color: var(--yellow); font-family: monospace; font-weight: 800; font-size: 14px; white-space: nowrap; }
+
   .ai-metadata { background: var(--gray-100); padding: 16px 24px; border-bottom: 1px solid var(--gray-200); font-size: 11px; }
   .meta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-bottom: 12px; }
   .meta-item strong { display: block; color: var(--gray-600); text-transform: uppercase; letter-spacing: 1px; font-size: 9px; margin-bottom: 4px; }
   .deep-tags { font-family: monospace; color: var(--blue); line-height: 1.8; }
   .tag { display: inline-block; background: #FFF; border: 1px solid var(--gray-200); padding: 2px 6px; border-radius: 2px; margin: 2px 4px 2px 0; color: var(--black); font-weight: 600;}
 
-  /* Full Content Dropdown */
   details { padding: 16px 24px; background: #FFF; }
   summary { font-weight: 700; cursor: pointer; color: var(--black); outline: none; margin-bottom: 12px; font-size: 14px; }
   summary:hover { color: var(--blue); }
   .content-body { padding: 24px; background: #FAFAFA; border-left: 4px solid var(--yellow); font-size: 13px; white-space: pre-wrap; font-family: monospace; color: #333; overflow-x: auto; }
+
+  #backToTop { position: fixed; bottom: 28px; right: 28px; width: 46px; height: 46px; border-radius: 50%; background: var(--black); color: var(--yellow); border: none; font-size: 18px; font-weight: 800; cursor: pointer; display: none; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.25); z-index: 200; }
+  #backToTop.visible { display: flex; }
 </style>
 </head>
 <body>
@@ -46,7 +63,40 @@
 
 <div class="search-container">
   <input type="text" id="searchInput" placeholder="🔍 Search tags, keywords, modules, or personas (e.g., 'Survey IQ', 'Developer', 'thermal')..." onkeyup="filterUseCases()">
+  <div class="filter-bar" id="filterBar">
+    <span class="filter-label">Industry:</span>
+    <button class="filter-pill" data-filter-type="industry" data-filter-value="Real Estate" onclick="togglePill(this)">Real Estate</button>
+    <button class="filter-pill" data-filter-type="industry" data-filter-value="Infrastructure" onclick="togglePill(this)">Infrastructure</button>
+    <button class="filter-pill" data-filter-type="industry" data-filter-value="Warehousing" onclick="togglePill(this)">Warehousing</button>
+    <button class="filter-pill" data-filter-type="industry" data-filter-value="Power" onclick="togglePill(this)">Power</button>
+    <button class="filter-pill" data-filter-type="industry" data-filter-value="Defence" onclick="togglePill(this)">Defence</button>
+    <button class="filter-pill" data-filter-type="industry" data-filter-value="Water" onclick="togglePill(this)">Water</button>
+    <button class="filter-pill" data-filter-type="industry" data-filter-value="Renewables" onclick="togglePill(this)">Renewables</button>
+    <button class="filter-pill" data-filter-type="industry" data-filter-value="Cross-Industry" onclick="togglePill(this)">Cross-Industry</button>
+  </div>
+  <div class="filter-bar" id="moduleFilterBar">
+    <span class="filter-label">Module:</span>
+    <button class="filter-pill" data-filter-type="module" data-filter-value="Construct IQ" onclick="togglePill(this)">Construct IQ</button>
+    <button class="filter-pill" data-filter-type="module" data-filter-value="Survey IQ" onclick="togglePill(this)">Survey IQ</button>
+    <button class="filter-pill" data-filter-type="module" data-filter-value="Inspect IQ" onclick="togglePill(this)">Inspect IQ</button>
+    <button class="filter-pill" data-filter-type="module" data-filter-value="BIM IQ" onclick="togglePill(this)">BIM IQ</button>
+    <button class="filter-pill" data-filter-type="module" data-filter-value="Studio IQ" onclick="togglePill(this)">Studio IQ</button>
+    <button class="filter-pill" data-filter-type="module" data-filter-value="DEX" onclick="togglePill(this)">DEX Platform</button>
+  </div>
 </div>
+
+<div class="results-bar">
+  <div class="results-count" id="resultsCount"><span id="resultsNum">48</span> use cases</div>
+  <button class="clear-filters" id="clearFiltersBtn" onclick="clearAllFilters()">Clear filters ✕</button>
+</div>
+
+<div class="no-results" id="noResults">
+  <div class="nr-icon">🔍</div>
+  <div class="nr-title">No use cases match your search</div>
+  <div class="nr-sub">Try a different keyword, or clear filters to see everything.</div>
+</div>
+
+<div id="cardsContainer">
 
 <div class="use-case-card">
   <div class="uc-header"><h2 class="uc-title">Establishing a Shared Reality Across Multi-Tower Developments</h2><span class="uc-id">UC-01</span></div>
@@ -291,7 +341,7 @@ Moving dirt is the highest variable cost in early construction. When contractors
 </div>
 
 <div class="use-case-card">
-  <div class="uc-header"><h2 class="uc-title">Master Planning Confidence: Terrain & Flood Risk Mapping</h2><span class="uc-id">UC-09</span></div>
+  <div class="uc-header"><h2 class="uc-title">Master Planning Confidence: Terrain &amp; Flood Risk Mapping</h2><span class="uc-id">UC-09</span></div>
   <div class="ai-metadata">
     <div class="meta-grid">
       <div class="meta-item"><strong>Industry</strong> <span class="tag">Infrastructure</span> <span class="tag">Govt</span></div>
@@ -356,10 +406,10 @@ For industrial developers, the true success of a project is realized during the 
     <div class="meta-grid">
       <div class="meta-item"><strong>Industry</strong> <span class="tag">Renewables</span> <span class="tag">Solar</span></div>
       <div class="meta-item"><strong>Module</strong> <span class="tag">Inspect IQ</span></div>
-      <div class="meta-item"><strong>Persona</strong> <span class="tag">O&M Manager</span> <span class="tag">Asset Owner</span></div>
+      <div class="meta-item"><strong>Persona</strong> <span class="tag">O&amp;M Manager</span> <span class="tag">Asset Owner</span></div>
       <div class="meta-item"><strong>Verified Metrics</strong> 10x faster fault detection, exact GPS localization</div>
     </div>
-    <div class="meta-item"><strong>AI Deep Search Tags</strong> <span class="deep-tags">solar farm thermal drone inspection, photovoltaic panel defect detection, utility scale solar O&M, radiometric thermal mapping, revenue leakage.</span></div>
+    <div class="meta-item"><strong>AI Deep Search Tags</strong> <span class="deep-tags">solar farm thermal drone inspection, photovoltaic panel defect detection, utility scale solar O&amp;M, radiometric thermal mapping, revenue leakage.</span></div>
   </div>
   <details><summary>View Full End-to-End Copy</summary><div class="content-body">> ### Executive Summary
 > * **The Context:** Manual inspections of massive utility-scale solar farms fail to catch micro-defects at scale, allowing silent string failures and diode anomalies to bleed power output.
@@ -381,12 +431,12 @@ Identifying faulty hardware is a massive geographical challenge. A single malfun
 </div>
 
 <div class="use-case-card">
-  <div class="uc-header"><h2 class="uc-title">Automated Facade & Industrial Asset Inspections</h2><span class="uc-id">UC-12</span></div>
+  <div class="uc-header"><h2 class="uc-title">Automated Facade &amp; Industrial Asset Inspections</h2><span class="uc-id">UC-12</span></div>
   <div class="ai-metadata">
     <div class="meta-grid">
       <div class="meta-item"><strong>Industry</strong> <span class="tag">Power</span> <span class="tag">Industrial</span></div>
       <div class="meta-item"><strong>Module</strong> <span class="tag">Inspect IQ</span></div>
-      <div class="meta-item"><strong>Persona</strong> <span class="tag">O&M Director</span> <span class="tag">Facility Manager</span></div>
+      <div class="meta-item"><strong>Persona</strong> <span class="tag">O&amp;M Director</span> <span class="tag">Facility Manager</span></div>
       <div class="meta-item"><strong>Verified Metrics</strong> 75% inspection cost cut, Zero scaffolds needed</div>
     </div>
     <div class="meta-item"><strong>AI Deep Search Tags</strong> <span class="deep-tags">AI drone asset inspection, industrial facade monitoring, rope access replacement, scaffold safety risk, predictive maintenance, concrete wear detection.</span></div>
@@ -440,22 +490,1146 @@ For the CXO, construction does not fail on site—it fails in the lag between an
 > 👉 [**Book a 15-Minute Walkthrough**](/book-demo)</div></details>
 </div>
 
+<div class="use-case-card">
+  <div class="uc-header"><h2 class="uc-title">Contractor Billing Validation</h2><span class="uc-id">UC-14</span></div>
+  <div class="ai-metadata">
+    <div class="meta-grid">
+      <div class="meta-item"><strong>Industry</strong> <span class="tag">Real Estate</span></div>
+      <div class="meta-item"><strong>Module</strong> <span class="tag">Construct IQ</span></div>
+      <div class="meta-item"><strong>Persona</strong> <span class="tag">PMO</span> <span class="tag">Developer</span></div>
+      <div class="meta-item"><strong>Verified Metrics</strong> Independently verified ground truth, reduced manual effort</div>
+    </div>
+    <div class="meta-item"><strong>AI Deep Search Tags</strong> <span class="deep-tags">contractor billing validation, construct iq deployment, real estate, ground truth verification, site intelligence, construction monitoring.</span></div>
+  </div>
+  <details><summary>View Full End-to-End Copy</summary><div class="content-body">> ### Executive Summary
+> * **The Context:** Contractor RA claims are typically processed on the basis of self-reported percentage completion or site engineer sign-offs. Without independent visual evidence, developers routinely pay for work that is either incomplete or mis-classified — with billing disputes emerging only weeks after payment has been made.
+> * **The Solution:** Deploying Construct IQ to fortnightly aerial captures tied directly to each billing cycle, with aI-mapped progress overlaid against contractor claims.
+> * **The ROI:** Contractors are paid for verified work. Billing disputes drop to near zero. Every payment decision has a timestamped visual audit trail.
+
+## Contractor Billing Validation
+Contractor RA claims are typically processed on the basis of self-reported percentage completion or site engineer sign-offs. Without independent visual evidence, developers routinely pay for work that is either incomplete or mis-classified — with billing disputes emerging only weeks after payment has been made.
+
+## The Verification Workflow
+1. **Automated Capture:** Fortnightly aerial captures tied directly to each billing cycle
+2. **Structured Analysis:** AI-mapped progress overlaid against contractor claims
+3. **Verified Output:** Visual evidence pack generated per RA, accessible to finance and project teams
+4. **Decision-Ready Delivery:** Disputed claims flagged before payment is processed — not after
+
+---
+> ### Ready to Upgrade Your Workflow?
+> See how YelloSKYE delivers verified ground truth for this exact scenario.
+> 👉 [**Book a 15-Minute Walkthrough**](/book-demo)</div></details>
+</div>
+
+<div class="use-case-card">
+  <div class="uc-header"><h2 class="uc-title">Multi-Tower Progress Monitoring</h2><span class="uc-id">UC-15</span></div>
+  <div class="ai-metadata">
+    <div class="meta-grid">
+      <div class="meta-item"><strong>Industry</strong> <span class="tag">Real Estate</span></div>
+      <div class="meta-item"><strong>Module</strong> <span class="tag">Construct IQ</span></div>
+      <div class="meta-item"><strong>Persona</strong> <span class="tag">PMO</span> <span class="tag">Developer</span></div>
+      <div class="meta-item"><strong>Verified Metrics</strong> Independently verified ground truth, reduced manual effort</div>
+    </div>
+    <div class="meta-item"><strong>AI Deep Search Tags</strong> <span class="deep-tags">multi-tower progress monitoring, construct iq deployment, real estate, ground truth verification, site intelligence, construction monitoring.</span></div>
+  </div>
+  <details><summary>View Full End-to-End Copy</summary><div class="content-body">> ### Executive Summary
+> * **The Context:** Managing simultaneous construction across 4, 6, or 10 towers from a single view is operationally impossible without a structured capture system. Site visits are infrequent, photo updates are fragmented, and progress narratives from different contractors rarely align.
+> * **The Solution:** Deploying Construct IQ to periodic drone captures across all towers on a unified schedule, with single DEX dashboard showing verified progress per tower, per floor.
+> * **The ROI:** One credible view of progress across every active tower, updated on a defined cycle, accessible without a site visit.
+
+## Multi-Tower Progress Monitoring
+Managing simultaneous construction across 4, 6, or 10 towers from a single view is operationally impossible without a structured capture system. Site visits are infrequent, photo updates are fragmented, and progress narratives from different contractors rarely align.
+
+## The Verification Workflow
+1. **Automated Capture:** Periodic drone captures across all towers on a unified schedule
+2. **Structured Analysis:** Single DEX dashboard showing verified progress per tower, per floor
+3. **Verified Output:** S-curve automation with milestone tracking for each block
+4. **Decision-Ready Delivery:** Role-based access: field engineers see their tower; leadership sees the portfolio
+
+---
+> ### Ready to Upgrade Your Workflow?
+> See how YelloSKYE delivers verified ground truth for this exact scenario.
+> 👉 [**Book a 15-Minute Walkthrough**](/book-demo)</div></details>
+</div>
+
+<div class="use-case-card">
+  <div class="uc-header"><h2 class="uc-title">As-Built vs Approved Plan Verification</h2><span class="uc-id">UC-16</span></div>
+  <div class="ai-metadata">
+    <div class="meta-grid">
+      <div class="meta-item"><strong>Industry</strong> <span class="tag">Real Estate</span></div>
+      <div class="meta-item"><strong>Module</strong> <span class="tag">BIM IQ</span></div>
+      <div class="meta-item"><strong>Persona</strong> <span class="tag">ENG</span> <span class="tag">BIM Manager</span></div>
+      <div class="meta-item"><strong>Verified Metrics</strong> Independently verified ground truth, reduced manual effort</div>
+    </div>
+    <div class="meta-item"><strong>AI Deep Search Tags</strong> <span class="deep-tags">as-built vs approved plan verification, bim iq deployment, real estate, ground truth verification, site intelligence, construction monitoring.</span></div>
+  </div>
+  <details><summary>View Full End-to-End Copy</summary><div class="content-body">> ### Executive Summary
+> * **The Context:** Construction deviations from sanctioned drawings are discovered late — typically at handover or during a regulatory inspection. By that point, rectification is expensive, timelines are disrupted, and accountability is contested.
+> * **The Solution:** Deploying BIM IQ to point cloud capture of the structure at key phase milestones, with automated overlay of as-built conditions against the approved 3D design model.
+> * **The ROI:** Deviations are identified and corrected at the phase boundary, not after the structure is complete.
+
+## As-Built vs Approved Plan Verification
+Construction deviations from sanctioned drawings are discovered late — typically at handover or during a regulatory inspection. By that point, rectification is expensive, timelines are disrupted, and accountability is contested.
+
+## The Verification Workflow
+1. **Automated Capture:** Point cloud capture of the structure at key phase milestones
+2. **Structured Analysis:** Automated overlay of as-built conditions against the approved 3D design model
+3. **Verified Output:** Deviation report by location and severity, delivered digitally to the project team
+4. **Decision-Ready Delivery:** Phase-wise sign-off before work progresses — not post-completion review
+
+---
+> ### Ready to Upgrade Your Workflow?
+> See how YelloSKYE delivers verified ground truth for this exact scenario.
+> 👉 [**Book a 15-Minute Walkthrough**](/book-demo)</div></details>
+</div>
+
+<div class="use-case-card">
+  <div class="uc-header"><h2 class="uc-title">Investor-Grade Progress Documentation</h2><span class="uc-id">UC-17</span></div>
+  <div class="ai-metadata">
+    <div class="meta-grid">
+      <div class="meta-item"><strong>Industry</strong> <span class="tag">Real Estate</span></div>
+      <div class="meta-item"><strong>Module</strong> <span class="tag">Studio IQ</span></div>
+      <div class="meta-item"><strong>Persona</strong> <span class="tag">PMO</span> <span class="tag">Quality Control</span></div>
+      <div class="meta-item"><strong>Verified Metrics</strong> Independently verified ground truth, reduced manual effort</div>
+    </div>
+    <div class="meta-item"><strong>AI Deep Search Tags</strong> <span class="deep-tags">investor-grade progress documentation, studio iq deployment, real estate, ground truth verification, site intelligence, construction monitoring.</span></div>
+  </div>
+  <details><summary>View Full End-to-End Copy</summary><div class="content-body">> ### Executive Summary
+> * **The Context:** Investors and equity partners require periodic visual evidence of construction progress. Producing this manually — coordinating site visits, compiling photographs, preparing narrative reports — consumes project management bandwidth and produces inconsistent, low-credibility output.
+> * **The Solution:** Deploying Studio IQ to fixed cameras at critical vantage points capturing continuous time-lapse, with drone-based milestone captures tied to investor reporting cycles.
+> * **The ROI:** Professional, consistent, visually compelling investor updates generated directly from captured data.
+
+## Investor-Grade Progress Documentation
+Investors and equity partners require periodic visual evidence of construction progress. Producing this manually — coordinating site visits, compiling photographs, preparing narrative reports — consumes project management bandwidth and produces inconsistent, low-credibility output.
+
+## The Verification Workflow
+1. **Automated Capture:** Fixed cameras at critical vantage points capturing continuous time-lapse
+2. **Structured Analysis:** Drone-based milestone captures tied to investor reporting cycles
+3. **Verified Output:** Studio IQ packages the visual record into a structured progress report
+4. **Decision-Ready Delivery:** Shareable investor update ready without a single manual compilation step
+
+---
+> ### Ready to Upgrade Your Workflow?
+> See how YelloSKYE delivers verified ground truth for this exact scenario.
+> 👉 [**Book a 15-Minute Walkthrough**](/book-demo)</div></details>
+</div>
+
+<div class="use-case-card">
+  <div class="uc-header"><h2 class="uc-title">Portfolio Dashboard for Developer Leadership</h2><span class="uc-id">UC-18</span></div>
+  <div class="ai-metadata">
+    <div class="meta-grid">
+      <div class="meta-item"><strong>Industry</strong> <span class="tag">Real Estate</span></div>
+      <div class="meta-item"><strong>Module</strong> <span class="tag">DEX</span></div>
+      <div class="meta-item"><strong>Persona</strong> <span class="tag">CXO</span> <span class="tag">Managing Director</span></div>
+      <div class="meta-item"><strong>Verified Metrics</strong> Independently verified ground truth, reduced manual effort</div>
+    </div>
+    <div class="meta-item"><strong>AI Deep Search Tags</strong> <span class="deep-tags">portfolio dashboard for developer leadership, dex deployment, real estate, ground truth verification, site intelligence, construction monitoring.</span></div>
+  </div>
+  <details><summary>View Full End-to-End Copy</summary><div class="content-body">> ### Executive Summary
+> * **The Context:** Developer leadership managing multiple simultaneous projects has no reliable way to compare progress, identify lagging sites, or prepare for board reviews — without manually consolidating reports from each project team, a process that takes days and still produces disputed numbers.
+> * **The Solution:** Deploying DEX to unified DEX dashboard across all active projects in the portfolio, with verified progress figures drawn from drone captures, not contractor submissions.
+> * **The ROI:** Leadership has one verified view of every project — ready for review at any time, without depending on project teams to prepare reports.
+
+## Portfolio Dashboard for Developer Leadership
+Developer leadership managing multiple simultaneous projects has no reliable way to compare progress, identify lagging sites, or prepare for board reviews — without manually consolidating reports from each project team, a process that takes days and still produces disputed numbers.
+
+## The Verification Workflow
+1. **Automated Capture:** Unified DEX dashboard across all active projects in the portfolio
+2. **Structured Analysis:** Verified progress figures drawn from drone captures, not contractor submissions
+3. **Verified Output:** S-curve comparison across projects in a single view
+4. **Decision-Ready Delivery:** Board-ready summary exportable without manual compilation
+
+---
+> ### Ready to Upgrade Your Workflow?
+> See how YelloSKYE delivers verified ground truth for this exact scenario.
+> 👉 [**Book a 15-Minute Walkthrough**](/book-demo)</div></details>
+</div>
+
+<div class="use-case-card">
+  <div class="uc-header"><h2 class="uc-title">Earthwork Volumetric Validation</h2><span class="uc-id">UC-19</span></div>
+  <div class="ai-metadata">
+    <div class="meta-grid">
+      <div class="meta-item"><strong>Industry</strong> <span class="tag">Infrastructure</span> <span class="tag">EPC</span></div>
+      <div class="meta-item"><strong>Module</strong> <span class="tag">Survey IQ</span></div>
+      <div class="meta-item"><strong>Persona</strong> <span class="tag">ENG</span> <span class="tag">Commercial Head</span></div>
+      <div class="meta-item"><strong>Verified Metrics</strong> 15%, 99.9%, 10%</div>
+    </div>
+    <div class="meta-item"><strong>AI Deep Search Tags</strong> <span class="deep-tags">earthwork volumetric validation, survey iq deployment, infrastructure epc, ground truth verification, site intelligence, construction monitoring.</span></div>
+  </div>
+  <details><summary>View Full End-to-End Copy</summary><div class="content-body">> ### Executive Summary
+> * **The Context:** Earthwork is one of the largest and least verifiable cost items in road and infrastructure projects. Contractors submit quantity claims based on their own measurements. Without independent volumetric data, project owners routinely overpay — with overruns of 10–15% at project close being common.
+> * **The Solution:** Deploying Survey IQ to monthly drone-based volumetric surveys across the full project area, with auto-generated cut/fill analytics and BOQ aligned to the approved design.
+> * **The ROI:** Earthwork quantities are independently verified before payment. Overruns are detected in the cycle they occur, not at project close.
+
+## Earthwork Volumetric Validation
+Earthwork is one of the largest and least verifiable cost items in road and infrastructure projects. Contractors submit quantity claims based on their own measurements. Without independent volumetric data, project owners routinely overpay — with overruns of 10–15% at project close being common.
+
+## The Verification Workflow
+1. **Automated Capture:** Monthly drone-based volumetric surveys across the full project area
+2. **Structured Analysis:** Auto-generated cut/fill analytics and BOQ aligned to the approved design
+3. **Verified Output:** Quantity validation before each contractor payment is processed
+4. **Decision-Ready Delivery:** **99.9% accuracy** — compared to ±10% from manual estimation methods
+
+---
+> ### Ready to Upgrade Your Workflow?
+> See how YelloSKYE delivers verified ground truth for this exact scenario.
+> 👉 [**Book a 15-Minute Walkthrough**](/book-demo)</div></details>
+</div>
+
+<div class="use-case-card">
+  <div class="uc-header"><h2 class="uc-title">Pre-Construction Corridor Terrain Mapping</h2><span class="uc-id">UC-20</span></div>
+  <div class="ai-metadata">
+    <div class="meta-grid">
+      <div class="meta-item"><strong>Industry</strong> <span class="tag">Infrastructure</span> <span class="tag">EPC</span></div>
+      <div class="meta-item"><strong>Module</strong> <span class="tag">Survey IQ</span></div>
+      <div class="meta-item"><strong>Persona</strong> <span class="tag">ENG</span> <span class="tag">Commercial Head</span></div>
+      <div class="meta-item"><strong>Verified Metrics</strong> 15%, 4%</div>
+    </div>
+    <div class="meta-item"><strong>AI Deep Search Tags</strong> <span class="deep-tags">pre-construction corridor terrain mapping, survey iq deployment, infrastructure epc, ground truth verification, site intelligence, construction monitoring.</span></div>
+  </div>
+  <details><summary>View Full End-to-End Copy</summary><div class="content-body">> ### Executive Summary
+> * **The Context:** Road and linear infrastructure projects require accurate terrain data before alignment is fixed, earthwork is tendered, or drainage is designed. Traditional survey methods take 3–6 weeks for a 50km corridor — and produce data that is already partially stale by the time design decisions are made.
+> * **The Solution:** Deploying Survey IQ to full-corridor aerial mapping completed in days, not weeks, with dEM and DTM modelling accurate to within centimetres.
+> * **The ROI:** Design and tendering decisions are made on verified terrain data, not interpolated assumptions. Earthwork uncertainty reduces from ~10–15% to ~2–4%.
+
+## Pre-Construction Corridor Terrain Mapping
+Road and linear infrastructure projects require accurate terrain data before alignment is fixed, earthwork is tendered, or drainage is designed. Traditional survey methods take 3–6 weeks for a 50km corridor — and produce data that is already partially stale by the time design decisions are made.
+
+## The Verification Workflow
+1. **Automated Capture:** Full-corridor aerial mapping completed in days, not weeks
+2. **Structured Analysis:** DEM and DTM modelling accurate to within centimetres
+3. **Verified Output:** Cut/fill estimation for tender-grade BOQ
+4. **Decision-Ready Delivery:** Master plan overlay for alignment and drainage validation
+
+---
+> ### Ready to Upgrade Your Workflow?
+> See how YelloSKYE delivers verified ground truth for this exact scenario.
+> 👉 [**Book a 15-Minute Walkthrough**](/book-demo)</div></details>
+</div>
+
+<div class="use-case-card">
+  <div class="uc-header"><h2 class="uc-title">Chainage-Wise Progress Monitoring</h2><span class="uc-id">UC-21</span></div>
+  <div class="ai-metadata">
+    <div class="meta-grid">
+      <div class="meta-item"><strong>Industry</strong> <span class="tag">Infrastructure</span> <span class="tag">EPC</span></div>
+      <div class="meta-item"><strong>Module</strong> <span class="tag">Construct IQ</span></div>
+      <div class="meta-item"><strong>Persona</strong> <span class="tag">PMO</span> <span class="tag">Developer</span></div>
+      <div class="meta-item"><strong>Verified Metrics</strong> Independently verified ground truth, reduced manual effort</div>
+    </div>
+    <div class="meta-item"><strong>AI Deep Search Tags</strong> <span class="deep-tags">chainage-wise progress monitoring, construct iq deployment, infrastructure epc, ground truth verification, site intelligence, construction monitoring.</span></div>
+  </div>
+  <details><summary>View Full End-to-End Copy</summary><div class="content-body">> ### Executive Summary
+> * **The Context:** Monitoring progress across a 50–200km road corridor through site visits alone is operationally impossible. Multiple contractors on different chainages submit independent progress claims, with no unified system to compare and validate across work fronts.
+> * **The Solution:** Deploying Construct IQ to aerial capture across the full corridor on a monthly cycle, with progress mapped chainage-by-chainage against the project schedule.
+> * **The ROI:** The entire corridor is monitored from one platform. Lagging chainages are identified within the capture cycle, not at the next quarterly review.
+
+## Chainage-Wise Progress Monitoring
+Monitoring progress across a 50–200km road corridor through site visits alone is operationally impossible. Multiple contractors on different chainages submit independent progress claims, with no unified system to compare and validate across work fronts.
+
+## The Verification Workflow
+1. **Automated Capture:** Aerial capture across the full corridor on a monthly cycle
+2. **Structured Analysis:** Progress mapped chainage-by-chainage against the project schedule
+3. **Verified Output:** Multi-work-front comparison in a single DEX view
+4. **Decision-Ready Delivery:** Deviation alerts when any section falls behind schedule threshold
+
+---
+> ### Ready to Upgrade Your Workflow?
+> See how YelloSKYE delivers verified ground truth for this exact scenario.
+> 👉 [**Book a 15-Minute Walkthrough**](/book-demo)</div></details>
+</div>
+
+<div class="use-case-card">
+  <div class="uc-header"><h2 class="uc-title">Authority Compliance and Audit Archive</h2><span class="uc-id">UC-22</span></div>
+  <div class="ai-metadata">
+    <div class="meta-grid">
+      <div class="meta-item"><strong>Industry</strong> <span class="tag">Infrastructure</span> <span class="tag">EPC</span></div>
+      <div class="meta-item"><strong>Module</strong> <span class="tag">DEX</span></div>
+      <div class="meta-item"><strong>Persona</strong> <span class="tag">CXO</span> <span class="tag">Managing Director</span></div>
+      <div class="meta-item"><strong>Verified Metrics</strong> Independently verified ground truth, reduced manual effort</div>
+    </div>
+    <div class="meta-item"><strong>AI Deep Search Tags</strong> <span class="deep-tags">authority compliance and audit archive, dex deployment, infrastructure epc, ground truth verification, site intelligence, construction monitoring.</span></div>
+  </div>
+  <details><summary>View Full End-to-End Copy</summary><div class="content-body">> ### Executive Summary
+> * **The Context:** Infrastructure projects face scrutiny from NHAI, MoRTH, CAG, and state highway authorities. When quantities are disputed or milestones challenged, project teams rely on contractor-supplied records and fragmented photographs — none of which carry independent authority.
+> * **The Solution:** Deploying DEX to continuous timestamped archive of every capture from mobilisation to handover, with gPS-referenced records of every survey, progress capture, and inspection event.
+> * **The ROI:** When any quantity or progress claim is questioned, the evidence is produced immediately — not reconstructed from disputed records over weeks.
+
+## Authority Compliance and Audit Archive
+Infrastructure projects face scrutiny from NHAI, MoRTH, CAG, and state highway authorities. When quantities are disputed or milestones challenged, project teams rely on contractor-supplied records and fragmented photographs — none of which carry independent authority.
+
+## The Verification Workflow
+1. **Automated Capture:** Continuous timestamped archive of every capture from mobilisation to handover
+2. **Structured Analysis:** GPS-referenced records of every survey, progress capture, and inspection event
+3. **Verified Output:** Evidence retrievable by date, chainage, and activity type in minutes
+4. **Decision-Ready Delivery:** Accepted in authority compliance meetings as independently verified data
+
+---
+> ### Ready to Upgrade Your Workflow?
+> See how YelloSKYE delivers verified ground truth for this exact scenario.
+> 👉 [**Book a 15-Minute Walkthrough**](/book-demo)</div></details>
+</div>
+
+<div class="use-case-card">
+  <div class="uc-header"><h2 class="uc-title">As-Built Verification Against Structural Drawings</h2><span class="uc-id">UC-23</span></div>
+  <div class="ai-metadata">
+    <div class="meta-grid">
+      <div class="meta-item"><strong>Industry</strong> <span class="tag">Infrastructure</span> <span class="tag">EPC</span></div>
+      <div class="meta-item"><strong>Module</strong> <span class="tag">BIM IQ</span></div>
+      <div class="meta-item"><strong>Persona</strong> <span class="tag">ENG</span> <span class="tag">BIM Manager</span></div>
+      <div class="meta-item"><strong>Verified Metrics</strong> Independently verified ground truth, reduced manual effort</div>
+    </div>
+    <div class="meta-item"><strong>AI Deep Search Tags</strong> <span class="deep-tags">as-built verification against structural drawings, bim iq deployment, infrastructure epc, ground truth verification, site intelligence, construction monitoring.</span></div>
+  </div>
+  <details><summary>View Full End-to-End Copy</summary><div class="content-body">> ### Executive Summary
+> * **The Context:** Structures built under EPC contracts — bridges, culverts, retaining walls, underpasses — are often inspected at handover with no systematic comparison against the approved structural design. Deviations are discovered months or years after completion, at significantly higher rectification cost.
+> * **The Solution:** Deploying BIM IQ to point cloud capture of completed structures at handover stage, with overlay against approved structural drawings and 3D models.
+> * **The ROI:** Structural deviations are identified at handover. As-built conditions are documented and retrievable throughout the asset's operating life.
+
+## As-Built Verification Against Structural Drawings
+Structures built under EPC contracts — bridges, culverts, retaining walls, underpasses — are often inspected at handover with no systematic comparison against the approved structural design. Deviations are discovered months or years after completion, at significantly higher rectification cost.
+
+## The Verification Workflow
+1. **Automated Capture:** Point cloud capture of completed structures at handover stage
+2. **Structured Analysis:** Overlay against approved structural drawings and 3D models
+3. **Verified Output:** Deviation report by element and severity
+4. **Decision-Ready Delivery:** Permanent as-built record in DEX for the full asset lifecycle
+
+---
+> ### Ready to Upgrade Your Workflow?
+> See how YelloSKYE delivers verified ground truth for this exact scenario.
+> 👉 [**Book a 15-Minute Walkthrough**](/book-demo)</div></details>
+</div>
+
+<div class="use-case-card">
+  <div class="uc-header"><h2 class="uc-title">Structural Progress Monitoring</h2><span class="uc-id">UC-24</span></div>
+  <div class="ai-metadata">
+    <div class="meta-grid">
+      <div class="meta-item"><strong>Industry</strong> <span class="tag">Warehousing</span> <span class="tag">Industrial</span></div>
+      <div class="meta-item"><strong>Module</strong> <span class="tag">Construct IQ</span></div>
+      <div class="meta-item"><strong>Persona</strong> <span class="tag">PMO</span> <span class="tag">Developer</span></div>
+      <div class="meta-item"><strong>Verified Metrics</strong> Independently verified ground truth, reduced manual effort</div>
+    </div>
+    <div class="meta-item"><strong>AI Deep Search Tags</strong> <span class="deep-tags">structural progress monitoring, construct iq deployment, warehousing industrial, ground truth verification, site intelligence, construction monitoring.</span></div>
+  </div>
+  <details><summary>View Full End-to-End Copy</summary><div class="content-body">> ### Executive Summary
+> * **The Context:** Large-format warehouse and industrial park construction involves fast-moving, concurrent activities across multiple bays and zones. Without structured aerial monitoring, developers have no independent record of progress — only contractor updates and periodic walk-throughs that miss the full picture.
+> * **The Solution:** Deploying Construct IQ to bi-weekly drone captures across the full site footprint, with bay-by-bay progress tracked against the construction schedule.
+> * **The ROI:** Every payment decision is backed by verified visual data. Progress disputes are resolved with evidence, not argument.
+
+## Structural Progress Monitoring
+Large-format warehouse and industrial park construction involves fast-moving, concurrent activities across multiple bays and zones. Without structured aerial monitoring, developers have no independent record of progress — only contractor updates and periodic walk-throughs that miss the full picture.
+
+## The Verification Workflow
+1. **Automated Capture:** Bi-weekly drone captures across the full site footprint
+2. **Structured Analysis:** Bay-by-bay progress tracked against the construction schedule
+3. **Verified Output:** Contractor claims validated against visual evidence before each payment
+4. **Decision-Ready Delivery:** DEX dashboard accessible to developer, contractor, and project management team
+
+---
+> ### Ready to Upgrade Your Workflow?
+> See how YelloSKYE delivers verified ground truth for this exact scenario.
+> 👉 [**Book a 15-Minute Walkthrough**](/book-demo)</div></details>
+</div>
+
+<div class="use-case-card">
+  <div class="uc-header"><h2 class="uc-title">Interior 360° Documentation and Handover</h2><span class="uc-id">UC-25</span></div>
+  <div class="ai-metadata">
+    <div class="meta-grid">
+      <div class="meta-item"><strong>Industry</strong> <span class="tag">Warehousing</span> <span class="tag">Industrial</span></div>
+      <div class="meta-item"><strong>Module</strong> <span class="tag">Studio IQ</span></div>
+      <div class="meta-item"><strong>Persona</strong> <span class="tag">PMO</span> <span class="tag">Quality Control</span></div>
+      <div class="meta-item"><strong>Verified Metrics</strong> Independently verified ground truth, reduced manual effort</div>
+    </div>
+    <div class="meta-item"><strong>AI Deep Search Tags</strong> <span class="deep-tags">interior 360° documentation and handover, studio iq deployment, warehousing industrial, ground truth verification, site intelligence, construction monitoring.</span></div>
+  </div>
+  <details><summary>View Full End-to-End Copy</summary><div class="content-body">> ### Executive Summary
+> * **The Context:** Industrial park handovers are frequently disputed. Tenants raise defects not documented at possession. Developers contest claims made months after handover. Without a structured visual record at the point of possession, neither party has independent evidence.
+> * **The Solution:** Deploying Studio IQ to complete 360° interior capture across all zones at pre-handover and handover stages, with timestamped archive of every bay, floor, and installation.
+> * **The ROI:** Zero handover disputes. Both parties reference the same visual record, eliminating the ambiguity that drives costly post-possession claims.
+
+## Interior 360° Documentation and Handover
+Industrial park handovers are frequently disputed. Tenants raise defects not documented at possession. Developers contest claims made months after handover. Without a structured visual record at the point of possession, neither party has independent evidence.
+
+## The Verification Workflow
+1. **Automated Capture:** Complete 360° interior capture across all zones at pre-handover and handover stages
+2. **Structured Analysis:** Timestamped archive of every bay, floor, and installation
+3. **Verified Output:** Shared DEX access for both developer and tenant at possession
+4. **Decision-Ready Delivery:** Any post-handover claim verifiable against the possession-day record
+
+---
+> ### Ready to Upgrade Your Workflow?
+> See how YelloSKYE delivers verified ground truth for this exact scenario.
+> 👉 [**Book a 15-Minute Walkthrough**](/book-demo)</div></details>
+</div>
+
+<div class="use-case-card">
+  <div class="uc-header"><h2 class="uc-title">Roof and Facade Condition Inspection</h2><span class="uc-id">UC-26</span></div>
+  <div class="ai-metadata">
+    <div class="meta-grid">
+      <div class="meta-item"><strong>Industry</strong> <span class="tag">Warehousing</span> <span class="tag">Industrial</span></div>
+      <div class="meta-item"><strong>Module</strong> <span class="tag">Inspect IQ</span></div>
+      <div class="meta-item"><strong>Persona</strong> <span class="tag">O&amp;M Manager</span> <span class="tag">Asset Owner</span></div>
+      <div class="meta-item"><strong>Verified Metrics</strong> Independently verified ground truth, reduced manual effort</div>
+    </div>
+    <div class="meta-item"><strong>AI Deep Search Tags</strong> <span class="deep-tags">roof and facade condition inspection, inspect iq deployment, warehousing industrial, ground truth verification, site intelligence, construction monitoring.</span></div>
+  </div>
+  <details><summary>View Full End-to-End Copy</summary><div class="content-body">> ### Executive Summary
+> * **The Context:** Warehouse and industrial shed roofing, cladding, and facade elements are difficult, costly, and hazardous to inspect manually. Deterioration in drainage elements, cladding joints, and roofing sheets is typically discovered only after it causes operational disruption.
+> * **The Solution:** Deploying Inspect IQ to drone-based close-range imaging of all roof and facade surfaces, with aI-mapped defect detection: cracks, waterproofing failures, corrosion, joint separation.
+> * **The ROI:** Structural deterioration is identified before it causes operational impact. Maintenance is planned against verified condition data, not reactive complaints.
+
+## Roof and Facade Condition Inspection
+Warehouse and industrial shed roofing, cladding, and facade elements are difficult, costly, and hazardous to inspect manually. Deterioration in drainage elements, cladding joints, and roofing sheets is typically discovered only after it causes operational disruption.
+
+## The Verification Workflow
+1. **Automated Capture:** Drone-based close-range imaging of all roof and facade surfaces
+2. **Structured Analysis:** AI-mapped defect detection: cracks, waterproofing failures, corrosion, joint separation
+3. **Verified Output:** Severity classification and geo-tagged issue log per asset
+4. **Decision-Ready Delivery:** Time-series archive tracking deterioration rate across inspection cycles
+
+---
+> ### Ready to Upgrade Your Workflow?
+> See how YelloSKYE delivers verified ground truth for this exact scenario.
+> 👉 [**Book a 15-Minute Walkthrough**](/book-demo)</div></details>
+</div>
+
+<div class="use-case-card">
+  <div class="uc-header"><h2 class="uc-title">Multi-Facility Portfolio Oversight</h2><span class="uc-id">UC-27</span></div>
+  <div class="ai-metadata">
+    <div class="meta-grid">
+      <div class="meta-item"><strong>Industry</strong> <span class="tag">Warehousing</span> <span class="tag">Industrial</span></div>
+      <div class="meta-item"><strong>Module</strong> <span class="tag">DEX</span></div>
+      <div class="meta-item"><strong>Persona</strong> <span class="tag">CXO</span> <span class="tag">Managing Director</span></div>
+      <div class="meta-item"><strong>Verified Metrics</strong> Independently verified ground truth, reduced manual effort</div>
+    </div>
+    <div class="meta-item"><strong>AI Deep Search Tags</strong> <span class="deep-tags">multi-facility portfolio oversight, dex deployment, warehousing industrial, ground truth verification, site intelligence, construction monitoring.</span></div>
+  </div>
+  <details><summary>View Full End-to-End Copy</summary><div class="content-body">> ### Executive Summary
+> * **The Context:** Industrial park operators managing multiple facilities have no unified system for comparing construction progress, asset condition, and maintenance status across geographies. Each facility reports independently, making cross-portfolio decisions unreliable.
+> * **The Solution:** Deploying DEX to unified DEX dashboard across all facilities in the portfolio, with standardised capture protocols ensuring comparable data across sites.
+> * **The ROI:** Portfolio leadership has one verified view of every facility — updated on a defined cycle, without relying on individual site reports.
+
+## Multi-Facility Portfolio Oversight
+Industrial park operators managing multiple facilities have no unified system for comparing construction progress, asset condition, and maintenance status across geographies. Each facility reports independently, making cross-portfolio decisions unreliable.
+
+## The Verification Workflow
+1. **Automated Capture:** Unified DEX dashboard across all facilities in the portfolio
+2. **Structured Analysis:** Standardised capture protocols ensuring comparable data across sites
+3. **Verified Output:** Consolidated progress and condition view for leadership review
+4. **Decision-Ready Delivery:** Automated lag summaries identifying underperforming or at-risk facilities
+
+---
+> ### Ready to Upgrade Your Workflow?
+> See how YelloSKYE delivers verified ground truth for this exact scenario.
+> 👉 [**Book a 15-Minute Walkthrough**](/book-demo)</div></details>
+</div>
+
+<div class="use-case-card">
+  <div class="uc-header"><h2 class="uc-title">Elevated Structure Inspection Without Shutdown</h2><span class="uc-id">UC-28</span></div>
+  <div class="ai-metadata">
+    <div class="meta-grid">
+      <div class="meta-item"><strong>Industry</strong> <span class="tag">Power</span> <span class="tag">Industrial</span></div>
+      <div class="meta-item"><strong>Module</strong> <span class="tag">Inspect IQ</span></div>
+      <div class="meta-item"><strong>Persona</strong> <span class="tag">O&amp;M Manager</span> <span class="tag">Asset Owner</span></div>
+      <div class="meta-item"><strong>Verified Metrics</strong> 75%</div>
+    </div>
+    <div class="meta-item"><strong>AI Deep Search Tags</strong> <span class="deep-tags">elevated structure inspection without shutdown, inspect iq deployment, power industrial, ground truth verification, site intelligence, construction monitoring.</span></div>
+  </div>
+  <details><summary>View Full End-to-End Copy</summary><div class="content-body">> ### Executive Summary
+> * **The Context:** Chimneys, cooling towers, transmission structures, and elevated process equipment require regular structural inspection. The standard approach — scaffolding, rope access, or internal inspection with shutdown — takes 2–4 weeks per asset, creates operational risk, and exposes personnel to significant safety hazards. Early-stage deterioration is routinely missed.
+> * **The Solution:** Deploying Inspect IQ to close-range drone imaging of every accessible surface, including areas unreachable by conventional means, with aI detection and classification of cracks, spalling, corrosion, and joint failures by severity.
+> * **The ROI:** 75% inspection cost reduction · Zero shutdowns · 350k+ images analysed
+
+## Elevated Structure Inspection Without Shutdown
+Chimneys, cooling towers, transmission structures, and elevated process equipment require regular structural inspection. The standard approach — scaffolding, rope access, or internal inspection with shutdown — takes 2–4 weeks per asset, creates operational risk, and exposes personnel to significant safety hazards. Early-stage deterioration is routinely missed.
+
+## The Verification Workflow
+1. **Automated Capture:** Close-range drone imaging of every accessible surface, including areas unreachable by conventional means
+2. **Structured Analysis:** AI detection and classification of cracks, spalling, corrosion, and joint failures by severity
+3. **Verified Output:** Geo-tagged issue log linked to the asset record in DEX
+4. **Decision-Ready Delivery:** Quarterly or on-demand inspection cycles — zero shutdown required
+
+---
+> ### Ready to Upgrade Your Workflow?
+> See how YelloSKYE delivers verified ground truth for this exact scenario.
+> 👉 [**Book a 15-Minute Walkthrough**](/book-demo)</div></details>
+</div>
+
+<div class="use-case-card">
+  <div class="uc-header"><h2 class="uc-title">Thermal Anomaly Detection on Solar Panels</h2><span class="uc-id">UC-29</span></div>
+  <div class="ai-metadata">
+    <div class="meta-grid">
+      <div class="meta-item"><strong>Industry</strong> <span class="tag">Power</span> <span class="tag">Industrial</span></div>
+      <div class="meta-item"><strong>Module</strong> <span class="tag">Inspect IQ</span></div>
+      <div class="meta-item"><strong>Persona</strong> <span class="tag">O&amp;M Manager</span> <span class="tag">Asset Owner</span></div>
+      <div class="meta-item"><strong>Verified Metrics</strong> Independently verified ground truth, reduced manual effort</div>
+    </div>
+    <div class="meta-item"><strong>AI Deep Search Tags</strong> <span class="deep-tags">thermal anomaly detection on solar panels, inspect iq deployment, power industrial, ground truth verification, site intelligence, construction monitoring.</span></div>
+  </div>
+  <details><summary>View Full End-to-End Copy</summary><div class="content-body">> ### Executive Summary
+> * **The Context:** Solar panel degradation — hotspots, bypass diode failures, soiling, and delamination — is invisible to standard visual inspection. Underperforming panels continue drawing down generation efficiency until a manual scan or production anomaly flags the issue, often months after the defect first appeared.
+> * **The Solution:** Deploying Inspect IQ to thermal and RGB drone imaging across the full solar array in a single pass, with aI identification of hotspots, diode failures, and underperforming strings.
+> * **The ROI:** Generation losses from undetected panel defects are eliminated. Maintenance teams address identified issues, not suspected ones.
+
+## Thermal Anomaly Detection on Solar Panels
+Solar panel degradation — hotspots, bypass diode failures, soiling, and delamination — is invisible to standard visual inspection. Underperforming panels continue drawing down generation efficiency until a manual scan or production anomaly flags the issue, often months after the defect first appeared.
+
+## The Verification Workflow
+1. **Automated Capture:** Thermal and RGB drone imaging across the full solar array in a single pass
+2. **Structured Analysis:** AI identification of hotspots, diode failures, and underperforming strings
+3. **Verified Output:** Issue mapped by panel location and severity for targeted maintenance
+4. **Decision-Ready Delivery:** Periodic inspection archive tracking degradation trends across the asset's operating life
+
+---
+> ### Ready to Upgrade Your Workflow?
+> See how YelloSKYE delivers verified ground truth for this exact scenario.
+> 👉 [**Book a 15-Minute Walkthrough**](/book-demo)</div></details>
+</div>
+
+<div class="use-case-card">
+  <div class="uc-header"><h2 class="uc-title">Chimney and Stack Defect Detection</h2><span class="uc-id">UC-30</span></div>
+  <div class="ai-metadata">
+    <div class="meta-grid">
+      <div class="meta-item"><strong>Industry</strong> <span class="tag">Power</span> <span class="tag">Industrial</span></div>
+      <div class="meta-item"><strong>Module</strong> <span class="tag">Inspect IQ</span></div>
+      <div class="meta-item"><strong>Persona</strong> <span class="tag">O&amp;M Manager</span> <span class="tag">Asset Owner</span></div>
+      <div class="meta-item"><strong>Verified Metrics</strong> Independently verified ground truth, reduced manual effort</div>
+    </div>
+    <div class="meta-item"><strong>AI Deep Search Tags</strong> <span class="deep-tags">chimney and stack defect detection, inspect iq deployment, power industrial, ground truth verification, site intelligence, construction monitoring.</span></div>
+  </div>
+  <details><summary>View Full End-to-End Copy</summary><div class="content-body">> ### Executive Summary
+> * **The Context:** Industrial chimneys and stacks are safety-critical assets requiring periodic structural assessment. Manual inspection requires scaffolding, access platforms, and extended shutdown periods — with significant personnel risk at height and in proximity to flue gases.
+> * **The Solution:** Deploying Inspect IQ to high-resolution drone imaging at close range across the full chimney height, with aI-assisted detection of surface cracks, refractory degradation, joint failures, and corrosion.
+> * **The ROI:** Inspection frequency increases. Personnel are not exposed to height risk. Structural deterioration is identified and addressed before it becomes a compliance or safety issue.
+
+## Chimney and Stack Defect Detection
+Industrial chimneys and stacks are safety-critical assets requiring periodic structural assessment. Manual inspection requires scaffolding, access platforms, and extended shutdown periods — with significant personnel risk at height and in proximity to flue gases.
+
+## The Verification Workflow
+1. **Automated Capture:** High-resolution drone imaging at close range across the full chimney height
+2. **Structured Analysis:** AI-assisted detection of surface cracks, refractory degradation, joint failures, and corrosion
+3. **Verified Output:** Severity-classified defect report with geo-tagged coordinates for precise maintenance targeting
+4. **Decision-Ready Delivery:** Permanent inspection archive in DEX for regulatory compliance and maintenance planning
+
+---
+> ### Ready to Upgrade Your Workflow?
+> See how YelloSKYE delivers verified ground truth for this exact scenario.
+> 👉 [**Book a 15-Minute Walkthrough**](/book-demo)</div></details>
+</div>
+
+<div class="use-case-card">
+  <div class="uc-header"><h2 class="uc-title">Transmission Line Corridor Mapping</h2><span class="uc-id">UC-31</span></div>
+  <div class="ai-metadata">
+    <div class="meta-grid">
+      <div class="meta-item"><strong>Industry</strong> <span class="tag">Power</span> <span class="tag">Industrial</span></div>
+      <div class="meta-item"><strong>Module</strong> <span class="tag">Survey IQ</span></div>
+      <div class="meta-item"><strong>Persona</strong> <span class="tag">ENG</span> <span class="tag">Commercial Head</span></div>
+      <div class="meta-item"><strong>Verified Metrics</strong> Independently verified ground truth, reduced manual effort</div>
+    </div>
+    <div class="meta-item"><strong>AI Deep Search Tags</strong> <span class="deep-tags">transmission line corridor mapping, survey iq deployment, power industrial, ground truth verification, site intelligence, construction monitoring.</span></div>
+  </div>
+  <details><summary>View Full End-to-End Copy</summary><div class="content-body">> ### Executive Summary
+> * **The Context:** Planning and maintaining high-voltage transmission corridors requires accurate terrain data along the full line route — for tower positioning, right-of-way validation, vegetation encroachment analysis, and flood risk assessment. Ground surveys along active corridors are hazardous and logistically complex.
+> * **The Solution:** Deploying Survey IQ to aerial mapping of the full transmission corridor without ground crew exposure, with dEM/DTM modelling for tower foundation planning and sag calculation.
+> * **The ROI:** Corridor survey completed safely, accurately, and in a fraction of the time. Encroachments and terrain changes are detected systematically, not by complaint.
+
+## Transmission Line Corridor Mapping
+Planning and maintaining high-voltage transmission corridors requires accurate terrain data along the full line route — for tower positioning, right-of-way validation, vegetation encroachment analysis, and flood risk assessment. Ground surveys along active corridors are hazardous and logistically complex.
+
+## The Verification Workflow
+1. **Automated Capture:** Aerial mapping of the full transmission corridor without ground crew exposure
+2. **Structured Analysis:** DEM/DTM modelling for tower foundation planning and sag calculation
+3. **Verified Output:** Encroachment detection identifying structures and vegetation inside the RoW
+4. **Decision-Ready Delivery:** Change detection between survey cycles identifying new encroachments or erosion
+
+---
+> ### Ready to Upgrade Your Workflow?
+> See how YelloSKYE delivers verified ground truth for this exact scenario.
+> 👉 [**Book a 15-Minute Walkthrough**](/book-demo)</div></details>
+</div>
+
+<div class="use-case-card">
+  <div class="uc-header"><h2 class="uc-title">Asset Condition Archive and Maintenance Scheduling</h2><span class="uc-id">UC-32</span></div>
+  <div class="ai-metadata">
+    <div class="meta-grid">
+      <div class="meta-item"><strong>Industry</strong> <span class="tag">Power</span> <span class="tag">Industrial</span></div>
+      <div class="meta-item"><strong>Module</strong> <span class="tag">DEX</span></div>
+      <div class="meta-item"><strong>Persona</strong> <span class="tag">CXO</span> <span class="tag">Managing Director</span></div>
+      <div class="meta-item"><strong>Verified Metrics</strong> Independently verified ground truth, reduced manual effort</div>
+    </div>
+    <div class="meta-item"><strong>AI Deep Search Tags</strong> <span class="deep-tags">asset condition archive and maintenance scheduling, dex deployment, power industrial, ground truth verification, site intelligence, construction monitoring.</span></div>
+  </div>
+  <details><summary>View Full End-to-End Copy</summary><div class="content-body">> ### Executive Summary
+> * **The Context:** Power and industrial asset owners managing multiple facilities have no unified system for tracking structural condition over time. Each inspection cycle produces standalone reports. Deterioration trends are not visible across assets, and maintenance scheduling is reactive rather than evidence-based.
+> * **The Solution:** Deploying DEX to dEX maintains a time-series condition archive for every inspected asset, with trend analysis across inspection cycles identifying accelerating deterioration.
+> * **The ROI:** Maintenance decisions are driven by verified condition data, not age-based schedules or reactive complaints. High-risk assets are prioritised before failure.
+
+## Asset Condition Archive and Maintenance Scheduling
+Power and industrial asset owners managing multiple facilities have no unified system for tracking structural condition over time. Each inspection cycle produces standalone reports. Deterioration trends are not visible across assets, and maintenance scheduling is reactive rather than evidence-based.
+
+## The Verification Workflow
+1. **Automated Capture:** DEX maintains a time-series condition archive for every inspected asset
+2. **Structured Analysis:** Trend analysis across inspection cycles identifying accelerating deterioration
+3. **Verified Output:** Risk-ranked maintenance schedule based on actual condition data
+4. **Decision-Ready Delivery:** Portfolio-level view: all assets, all conditions, in one dashboard
+
+---
+> ### Ready to Upgrade Your Workflow?
+> See how YelloSKYE delivers verified ground truth for this exact scenario.
+> 👉 [**Book a 15-Minute Walkthrough**](/book-demo)</div></details>
+</div>
+
+<div class="use-case-card">
+  <div class="uc-header"><h2 class="uc-title">Pre-Construction Terrain Mapping for Base Development</h2><span class="uc-id">UC-33</span></div>
+  <div class="ai-metadata">
+    <div class="meta-grid">
+      <div class="meta-item"><strong>Industry</strong> <span class="tag">Defence</span> <span class="tag">Government</span></div>
+      <div class="meta-item"><strong>Module</strong> <span class="tag">Survey IQ</span></div>
+      <div class="meta-item"><strong>Persona</strong> <span class="tag">ENG</span> <span class="tag">Commercial Head</span></div>
+      <div class="meta-item"><strong>Verified Metrics</strong> 15%, 4%, 5×</div>
+    </div>
+    <div class="meta-item"><strong>AI Deep Search Tags</strong> <span class="deep-tags">pre-construction terrain mapping for base development, survey iq deployment, defence government, ground truth verification, site intelligence, construction monitoring.</span></div>
+  </div>
+  <details><summary>View Full End-to-End Copy</summary><div class="content-body">> ### Executive Summary
+> * **The Context:** Establishing a forward operating base, cantonment expansion, or training campus in remote or sensitive terrain requires accurate topographic data before civil work begins. Manual survey teams face access constraints, safety risks, and timelines of 3–6 weeks — by which time operational priorities may have shifted.
+> * **The Solution:** Deploying Survey IQ to full-area aerial mapping without ground crew entering contested or restricted zones, with dEM and DTM modelling with survey-grade accuracy.
+> * **The ROI:** Earthwork uncertainty reduced from ~10–15% to ~2–4% · 5× faster survey completion
+
+## Pre-Construction Terrain Mapping for Base Development
+Establishing a forward operating base, cantonment expansion, or training campus in remote or sensitive terrain requires accurate topographic data before civil work begins. Manual survey teams face access constraints, safety risks, and timelines of 3–6 weeks — by which time operational priorities may have shifted.
+
+## The Verification Workflow
+1. **Automated Capture:** Full-area aerial mapping without ground crew entering contested or restricted zones
+2. **Structured Analysis:** DEM and DTM modelling with survey-grade accuracy
+3. **Verified Output:** Cut/fill estimation and drainage modelling for civil planning
+4. **Decision-Ready Delivery:** Master plan overlay for alignment and earthwork validation
+
+---
+> ### Ready to Upgrade Your Workflow?
+> See how YelloSKYE delivers verified ground truth for this exact scenario.
+> 👉 [**Book a 15-Minute Walkthrough**](/book-demo)</div></details>
+</div>
+
+<div class="use-case-card">
+  <div class="uc-header"><h2 class="uc-title">Capital Works Progress Monitoring</h2><span class="uc-id">UC-34</span></div>
+  <div class="ai-metadata">
+    <div class="meta-grid">
+      <div class="meta-item"><strong>Industry</strong> <span class="tag">Defence</span> <span class="tag">Government</span></div>
+      <div class="meta-item"><strong>Module</strong> <span class="tag">Construct IQ</span></div>
+      <div class="meta-item"><strong>Persona</strong> <span class="tag">PMO</span> <span class="tag">Developer</span></div>
+      <div class="meta-item"><strong>Verified Metrics</strong> 60%</div>
+    </div>
+    <div class="meta-item"><strong>AI Deep Search Tags</strong> <span class="deep-tags">capital works progress monitoring, construct iq deployment, defence government, ground truth verification, site intelligence, construction monitoring.</span></div>
+  </div>
+  <details><summary>View Full End-to-End Copy</summary><div class="content-body">> ### Executive Summary
+> * **The Context:** Defence capital works — runway upgrades, base expansion, habitat and utility construction — involve multiple contractors and readiness-sensitive milestones. Command-level oversight is difficult when physical inspections are infrequent and contractor progress reports are the primary information source.
+> * **The Solution:** Deploying Construct IQ to periodic aerial capture across all active work fronts, with plan-versus-actual overlay with automated deviation detection.
+> * **The ROI:** 40–60% reduction in inspection-related travel · Earlier identification of milestone variance
+
+## Capital Works Progress Monitoring
+Defence capital works — runway upgrades, base expansion, habitat and utility construction — involve multiple contractors and readiness-sensitive milestones. Command-level oversight is difficult when physical inspections are infrequent and contractor progress reports are the primary information source.
+
+## The Verification Workflow
+1. **Automated Capture:** Periodic aerial capture across all active work fronts
+2. **Structured Analysis:** Plan-versus-actual overlay with automated deviation detection
+3. **Verified Output:** Command-level DEX dashboard providing independent, continuous progress visibility
+4. **Decision-Ready Delivery:** S-curve automation and milestone tracking aligned to contract schedules
+
+---
+> ### Ready to Upgrade Your Workflow?
+> See how YelloSKYE delivers verified ground truth for this exact scenario.
+> 👉 [**Book a 15-Minute Walkthrough**](/book-demo)</div></details>
+</div>
+
+<div class="use-case-card">
+  <div class="uc-header"><h2 class="uc-title">Strategic Asset and Facility Inspection</h2><span class="uc-id">UC-35</span></div>
+  <div class="ai-metadata">
+    <div class="meta-grid">
+      <div class="meta-item"><strong>Industry</strong> <span class="tag">Defence</span> <span class="tag">Government</span></div>
+      <div class="meta-item"><strong>Module</strong> <span class="tag">Inspect IQ</span></div>
+      <div class="meta-item"><strong>Persona</strong> <span class="tag">O&amp;M Manager</span> <span class="tag">Asset Owner</span></div>
+      <div class="meta-item"><strong>Verified Metrics</strong> 70%</div>
+    </div>
+    <div class="meta-item"><strong>AI Deep Search Tags</strong> <span class="deep-tags">strategic asset and facility inspection, inspect iq deployment, defence government, ground truth verification, site intelligence, construction monitoring.</span></div>
+  </div>
+  <details><summary>View Full End-to-End Copy</summary><div class="content-body">> ### Executive Summary
+> * **The Context:** Critical defence infrastructure — airbases, dockyards, storage installations, industrial facilities — requires regular structural inspection. Manual inspection requires scaffolding, extended access preparation, and in some cases operational shutdown. Early-stage deterioration in roofing, facades, and structural elements is frequently missed.
+> * **The Solution:** Deploying Inspect IQ to drone-based structural and roof inspection of all facility assets, with thermal anomaly detection identifying waterproofing failures and insulation degradation.
+> * **The ROI:** 40–70% reduction in manual inspection exposure · Zero shutdown required
+
+## Strategic Asset and Facility Inspection
+Critical defence infrastructure — airbases, dockyards, storage installations, industrial facilities — requires regular structural inspection. Manual inspection requires scaffolding, extended access preparation, and in some cases operational shutdown. Early-stage deterioration in roofing, facades, and structural elements is frequently missed.
+
+## The Verification Workflow
+1. **Automated Capture:** Drone-based structural and roof inspection of all facility assets
+2. **Structured Analysis:** Thermal anomaly detection identifying waterproofing failures and insulation degradation
+3. **Verified Output:** Geo-tagged issue log with severity classification
+4. **Decision-Ready Delivery:** Time-series archive enabling trend-based maintenance prioritisation
+
+---
+> ### Ready to Upgrade Your Workflow?
+> See how YelloSKYE delivers verified ground truth for this exact scenario.
+> 👉 [**Book a 15-Minute Walkthrough**](/book-demo)</div></details>
+</div>
+
+<div class="use-case-card">
+  <div class="uc-header"><h2 class="uc-title">Multi-Site Portfolio Intelligence for Command Review</h2><span class="uc-id">UC-36</span></div>
+  <div class="ai-metadata">
+    <div class="meta-grid">
+      <div class="meta-item"><strong>Industry</strong> <span class="tag">Defence</span> <span class="tag">Government</span></div>
+      <div class="meta-item"><strong>Module</strong> <span class="tag">DEX</span></div>
+      <div class="meta-item"><strong>Persona</strong> <span class="tag">CXO</span> <span class="tag">Managing Director</span></div>
+      <div class="meta-item"><strong>Verified Metrics</strong> 50%</div>
+    </div>
+    <div class="meta-item"><strong>AI Deep Search Tags</strong> <span class="deep-tags">multi-site portfolio intelligence for command review, dex deployment, defence government, ground truth verification, site intelligence, construction monitoring.</span></div>
+  </div>
+  <details><summary>View Full End-to-End Copy</summary><div class="content-body">> ### Executive Summary
+> * **The Context:** Oversight of concurrent engineering works across multiple stations, commands, and regions requires a unified platform. Consolidating reports from multiple project teams takes days, produces disputed numbers, and gives leadership a view of the past rather than the present.
+> * **The Solution:** Deploying DEX to single DEX dashboard across all active sites in the portfolio, with standardised capture protocols ensuring comparable data across regions.
+> * **The ROI:** 30–50% faster preparation of command-level briefs · Unified, independently verified progress view
+
+## Multi-Site Portfolio Intelligence for Command Review
+Oversight of concurrent engineering works across multiple stations, commands, and regions requires a unified platform. Consolidating reports from multiple project teams takes days, produces disputed numbers, and gives leadership a view of the past rather than the present.
+
+## The Verification Workflow
+1. **Automated Capture:** Single DEX dashboard across all active sites in the portfolio
+2. **Structured Analysis:** Standardised capture protocols ensuring comparable data across regions
+3. **Verified Output:** Automated lag summaries and deviation alerts for command review
+4. **Decision-Ready Delivery:** Role-based access: field engineers see their site; command sees the portfolio
+
+---
+> ### Ready to Upgrade Your Workflow?
+> See how YelloSKYE delivers verified ground truth for this exact scenario.
+> 👉 [**Book a 15-Minute Walkthrough**](/book-demo)</div></details>
+</div>
+
+<div class="use-case-card">
+  <div class="uc-header"><h2 class="uc-title">Flood Plain and Drainage Basin Mapping</h2><span class="uc-id">UC-37</span></div>
+  <div class="ai-metadata">
+    <div class="meta-grid">
+      <div class="meta-item"><strong>Industry</strong> <span class="tag">Water</span> <span class="tag">Environment</span></div>
+      <div class="meta-item"><strong>Module</strong> <span class="tag">Survey IQ</span></div>
+      <div class="meta-item"><strong>Persona</strong> <span class="tag">ENG</span> <span class="tag">Commercial Head</span></div>
+      <div class="meta-item"><strong>Verified Metrics</strong> Independently verified ground truth, reduced manual effort</div>
+    </div>
+    <div class="meta-item"><strong>AI Deep Search Tags</strong> <span class="deep-tags">flood plain and drainage basin mapping, survey iq deployment, water environment, ground truth verification, site intelligence, construction monitoring.</span></div>
+  </div>
+  <details><summary>View Full End-to-End Copy</summary><div class="content-body">> ### Executive Summary
+> * **The Context:** Flood mitigation, stormwater management, and drainage infrastructure planning require accurate terrain models across large areas. Manual survey methods are slow, expensive in challenging terrain, and produce data that degrades in accuracy over distance.
+> * **The Solution:** Deploying Survey IQ to high-accuracy aerial mapping across full catchment or drainage basin areas, with dEM and DTM modelling for hydraulic analysis and flood modelling inputs.
+> * **The ROI:** Hydraulic models and drainage designs are built on verified terrain data, not interpolated approximations. Survey coverage that would take months manually is completed in days.
+
+## Flood Plain and Drainage Basin Mapping
+Flood mitigation, stormwater management, and drainage infrastructure planning require accurate terrain models across large areas. Manual survey methods are slow, expensive in challenging terrain, and produce data that degrades in accuracy over distance.
+
+## The Verification Workflow
+1. **Automated Capture:** High-accuracy aerial mapping across full catchment or drainage basin areas
+2. **Structured Analysis:** DEM and DTM modelling for hydraulic analysis and flood modelling inputs
+3. **Verified Output:** Contour data accurate to within centimetres across the full mapped area
+4. **Decision-Ready Delivery:** Change detection between survey cycles identifying terrain shifts or encroachment
+
+---
+> ### Ready to Upgrade Your Workflow?
+> See how YelloSKYE delivers verified ground truth for this exact scenario.
+> 👉 [**Book a 15-Minute Walkthrough**](/book-demo)</div></details>
+</div>
+
+<div class="use-case-card">
+  <div class="uc-header"><h2 class="uc-title">Construction Monitoring for Public Infrastructure</h2><span class="uc-id">UC-38</span></div>
+  <div class="ai-metadata">
+    <div class="meta-grid">
+      <div class="meta-item"><strong>Industry</strong> <span class="tag">Water</span> <span class="tag">Environment</span></div>
+      <div class="meta-item"><strong>Module</strong> <span class="tag">Construct IQ</span></div>
+      <div class="meta-item"><strong>Persona</strong> <span class="tag">PMO</span> <span class="tag">Developer</span></div>
+      <div class="meta-item"><strong>Verified Metrics</strong> Independently verified ground truth, reduced manual effort</div>
+    </div>
+    <div class="meta-item"><strong>AI Deep Search Tags</strong> <span class="deep-tags">construction monitoring for public infrastructure, construct iq deployment, water environment, ground truth verification, site intelligence, construction monitoring.</span></div>
+  </div>
+  <details><summary>View Full End-to-End Copy</summary><div class="content-body">> ### Executive Summary
+> * **The Context:** Water and environmental infrastructure projects — treatment plants, pumping stations, pipelines — are subject to public accountability and multi-tier audit. Progress reporting relies on contractor submissions, with limited independent verification and no structured visual archive for compliance.
+> * **The Solution:** Deploying Construct IQ to periodic aerial captures tied to the project milestone schedule, with independent progress verification before each payment certification.
+> * **The ROI:** Every progress payment is backed by independent visual evidence. The project archive meets audit requirements without manual compilation.
+
+## Construction Monitoring for Public Infrastructure
+Water and environmental infrastructure projects — treatment plants, pumping stations, pipelines — are subject to public accountability and multi-tier audit. Progress reporting relies on contractor submissions, with limited independent verification and no structured visual archive for compliance.
+
+## The Verification Workflow
+1. **Automated Capture:** Periodic aerial captures tied to the project milestone schedule
+2. **Structured Analysis:** Independent progress verification before each payment certification
+3. **Verified Output:** DEX archive providing a timestamped, GPS-referenced record for audit purposes
+4. **Decision-Ready Delivery:** Dashboard accessible to the project owner, PMC, and oversight authority
+
+---
+> ### Ready to Upgrade Your Workflow?
+> See how YelloSKYE delivers verified ground truth for this exact scenario.
+> 👉 [**Book a 15-Minute Walkthrough**](/book-demo)</div></details>
+</div>
+
+<div class="use-case-card">
+  <div class="uc-header"><h2 class="uc-title">Natural Language Project Queries</h2><span class="uc-id">UC-39</span></div>
+  <div class="ai-metadata">
+    <div class="meta-grid">
+      <div class="meta-item"><strong>Industry</strong> <span class="tag">Cross-Industry</span></div>
+      <div class="meta-item"><strong>Module</strong> <span class="tag">AskDEX</span></div>
+      <div class="meta-item"><strong>Persona</strong> <span class="tag">CXO</span> <span class="tag">Managing Director</span></div>
+      <div class="meta-item"><strong>Verified Metrics</strong> Independently verified ground truth, reduced manual effort</div>
+    </div>
+    <div class="meta-item"><strong>AI Deep Search Tags</strong> <span class="deep-tags">natural language project queries, askdex deployment, cross-industry, ground truth verification, site intelligence, construction monitoring.</span></div>
+  </div>
+  <details><summary>View Full End-to-End Copy</summary><div class="content-body">> ### Executive Summary
+> * **The Context:** Project data across construction, inspection, and survey workflows is captured and structured in DEX — but accessing it typically requires navigating dashboards or waiting for a project manager to compile an update. For leadership and owners who need quick answers, this friction slows decision-making.
+> * **The Solution:** Deploying AskDEX to askDEX: a conversational AI layer built directly on top of the DEX platform, with ask in plain language: *"What is the progress at Tower C as of last week?"* or *"Which sites have fallen behind schedule this month?"*.
+> * **The ROI:** Project intelligence is available on demand to anyone with access, without a report or a site visit.
+
+## Natural Language Project Queries
+Project data across construction, inspection, and survey workflows is captured and structured in DEX — but accessing it typically requires navigating dashboards or waiting for a project manager to compile an update. For leadership and owners who need quick answers, this friction slows decision-making.
+
+## The Verification Workflow
+1. **Automated Capture:** AskDEX: a conversational AI layer built directly on top of the DEX platform
+2. **Structured Analysis:** Ask in plain language: *"What is the progress at Tower C as of last week?"* or *"Which sites have fallen behind schedule this month?"*
+3. **Verified Output:** Answers drawn from verified DEX data — not from someone's interpretation of it
+4. **Decision-Ready Delivery:** Accessible on mobile and desktop, from any location
+
+---
+> ### Ready to Upgrade Your Workflow?
+> See how YelloSKYE delivers verified ground truth for this exact scenario.
+> 👉 [**Book a 15-Minute Walkthrough**](/book-demo)</div></details>
+</div>
+
+<div class="use-case-card">
+  <div class="uc-header"><h2 class="uc-title">S-Curve Automation and Milestone Tracking</h2><span class="uc-id">UC-40</span></div>
+  <div class="ai-metadata">
+    <div class="meta-grid">
+      <div class="meta-item"><strong>Industry</strong> <span class="tag">Cross-Industry</span></div>
+      <div class="meta-item"><strong>Module</strong> <span class="tag">DEX</span></div>
+      <div class="meta-item"><strong>Persona</strong> <span class="tag">CXO</span> <span class="tag">Managing Director</span></div>
+      <div class="meta-item"><strong>Verified Metrics</strong> Independently verified ground truth, reduced manual effort</div>
+    </div>
+    <div class="meta-item"><strong>AI Deep Search Tags</strong> <span class="deep-tags">s-curve automation and milestone tracking, dex deployment, cross-industry, ground truth verification, site intelligence, construction monitoring.</span></div>
+  </div>
+  <details><summary>View Full End-to-End Copy</summary><div class="content-body">> ### Executive Summary
+> * **The Context:** Most projects produce S-curves from contractor submissions — which are optimistic, inconsistent, and difficult to reconcile against reality. By the time a deviation is visible in the curve, it is already weeks old and catching up is significantly harder.
+> * **The Solution:** Deploying DEX to s-curves generated automatically from drone-captured progress data, with planned versus actual curves updated each capture cycle.
+> * **The ROI:** The S-curve reflects verified reality. Deviations are visible in the cycle they occur — weeks earlier than a report-based process would surface them.
+
+## S-Curve Automation and Milestone Tracking
+Most projects produce S-curves from contractor submissions — which are optimistic, inconsistent, and difficult to reconcile against reality. By the time a deviation is visible in the curve, it is already weeks old and catching up is significantly harder.
+
+## The Verification Workflow
+1. **Automated Capture:** S-curves generated automatically from drone-captured progress data
+2. **Structured Analysis:** Planned versus actual curves updated each capture cycle
+3. **Verified Output:** Milestone completion verified independently before being marked in the schedule
+4. **Decision-Ready Delivery:** Deviation alerts triggered when actual progress diverges from planned trajectory
+
+---
+> ### Ready to Upgrade Your Workflow?
+> See how YelloSKYE delivers verified ground truth for this exact scenario.
+> 👉 [**Book a 15-Minute Walkthrough**](/book-demo)</div></details>
+</div>
+
+<div class="use-case-card">
+  <div class="uc-header"><h2 class="uc-title">Bridge and Infrastructure Inspection</h2><span class="uc-id">UC-41</span></div>
+  <div class="ai-metadata">
+    <div class="meta-grid">
+      <div class="meta-item"><strong>Industry</strong> <span class="tag">Cross-Industry</span></div>
+      <div class="meta-item"><strong>Module</strong> <span class="tag">Inspect IQ</span></div>
+      <div class="meta-item"><strong>Persona</strong> <span class="tag">O&amp;M Manager</span> <span class="tag">Asset Owner</span></div>
+      <div class="meta-item"><strong>Verified Metrics</strong> Independently verified ground truth, reduced manual effort</div>
+    </div>
+    <div class="meta-item"><strong>AI Deep Search Tags</strong> <span class="deep-tags">bridge and infrastructure inspection, inspect iq deployment, cross-industry, ground truth verification, site intelligence, construction monitoring.</span></div>
+  </div>
+  <details><summary>View Full End-to-End Copy</summary><div class="content-body">> ### Executive Summary
+> * **The Context:** Bridges, flyovers, viaducts, and elevated infrastructure require regular structural inspection of surfaces that are hazardous to access manually — soffits, piers, bearings, expansion joints, and abutment faces. Standard practice relies on visual assessment from the carriageway, missing significant surface area and providing no structured condition record.
+> * **The Solution:** Deploying Inspect IQ to close-range drone imaging of all structure surfaces, including under-deck and pier elements, with aI-mapped detection of concrete cracking, spalling, rebar exposure, and bearing deterioration.
+> * **The ROI:** Bridge inspection coverage increases dramatically. Defects are identified and classified before they compromise structural performance or safety ratings.
+
+## Bridge and Infrastructure Inspection
+Bridges, flyovers, viaducts, and elevated infrastructure require regular structural inspection of surfaces that are hazardous to access manually — soffits, piers, bearings, expansion joints, and abutment faces. Standard practice relies on visual assessment from the carriageway, missing significant surface area and providing no structured condition record.
+
+## The Verification Workflow
+1. **Automated Capture:** Close-range drone imaging of all structure surfaces, including under-deck and pier elements
+2. **Structured Analysis:** AI-mapped detection of concrete cracking, spalling, rebar exposure, and bearing deterioration
+3. **Verified Output:** Severity-classified defect report with geo-tagged coordinates for maintenance targeting
+4. **Decision-Ready Delivery:** Time-series archive tracking structural condition across inspection cycles
+
+---
+> ### Ready to Upgrade Your Workflow?
+> See how YelloSKYE delivers verified ground truth for this exact scenario.
+> 👉 [**Book a 15-Minute Walkthrough**](/book-demo)</div></details>
+</div>
+
+<div class="use-case-card">
+  <div class="uc-header"><h2 class="uc-title">Reservoir and Dam Catchment Mapping</h2><span class="uc-id">UC-42</span></div>
+  <div class="ai-metadata">
+    <div class="meta-grid">
+      <div class="meta-item"><strong>Industry</strong> <span class="tag">Water</span> <span class="tag">Environment</span></div>
+      <div class="meta-item"><strong>Module</strong> <span class="tag">Survey IQ</span></div>
+      <div class="meta-item"><strong>Persona</strong> <span class="tag">ENG</span> <span class="tag">Commercial Head</span></div>
+      <div class="meta-item"><strong>Verified Metrics</strong> Independently verified ground truth, reduced manual effort</div>
+    </div>
+    <div class="meta-item"><strong>AI Deep Search Tags</strong> <span class="deep-tags">reservoir and dam catchment mapping, survey iq deployment, water environment, ground truth verification, site intelligence, construction monitoring.</span></div>
+  </div>
+  <details><summary>View Full End-to-End Copy</summary><div class="content-body">> ### Executive Summary
+> * **The Context:** Reservoir catchment areas require accurate topographic data for capacity assessment, siltation monitoring, and spillway planning. Ground surveys in these environments are hazardous and time-consuming.
+> * **The Solution:** Deploying Survey IQ to aerial mapping of full reservoir and catchment area in days, with dEM and DTM modelling for capacity and siltation volume calculations.
+> * **The ROI:** Reservoir capacity assessments are based on verified volumetric data. Siltation trends are tracked across seasons without ground team deployment.
+
+## Reservoir and Dam Catchment Mapping
+Reservoir catchment areas require accurate topographic data for capacity assessment, siltation monitoring, and spillway planning. Ground surveys in these environments are hazardous and time-consuming.
+
+## The Verification Workflow
+1. **Automated Capture:** Aerial mapping of full reservoir and catchment area in days
+2. **Structured Analysis:** DEM and DTM modelling for capacity and siltation volume calculations
+3. **Verified Output:** Change detection between cycles tracking siltation buildup and bank erosion
+4. **Decision-Ready Delivery:** Spillway and drainage modelling from accurate terrain data
+
+---
+> ### Ready to Upgrade Your Workflow?
+> See how YelloSKYE delivers verified ground truth for this exact scenario.
+> 👉 [**Book a 15-Minute Walkthrough**](/book-demo)</div></details>
+</div>
+
+<div class="use-case-card">
+  <div class="uc-header"><h2 class="uc-title">Fixed Camera Time-Lapse for Investor Reporting</h2><span class="uc-id">UC-43</span></div>
+  <div class="ai-metadata">
+    <div class="meta-grid">
+      <div class="meta-item"><strong>Industry</strong> <span class="tag">Warehousing</span> <span class="tag">Industrial</span></div>
+      <div class="meta-item"><strong>Module</strong> <span class="tag">Studio IQ</span></div>
+      <div class="meta-item"><strong>Persona</strong> <span class="tag">PMO</span> <span class="tag">Quality Control</span></div>
+      <div class="meta-item"><strong>Verified Metrics</strong> Independently verified ground truth, reduced manual effort</div>
+    </div>
+    <div class="meta-item"><strong>AI Deep Search Tags</strong> <span class="deep-tags">fixed camera time-lapse for investor reporting, studio iq deployment, warehousing industrial, ground truth verification, site intelligence, construction monitoring.</span></div>
+  </div>
+  <details><summary>View Full End-to-End Copy</summary><div class="content-body">> ### Executive Summary
+> * **The Context:** Logistics and industrial park investors require consistent visual evidence of construction progress. Producing this manually consumes project management time and produces inconsistent output.
+> * **The Solution:** Deploying Studio IQ to fixed cameras installed at key vantage points from mobilisation, with continuous time-lapse archive from ground-break to commissioning.
+> * **The ROI:** Professional investor updates generated directly from captured data — no manual compilation, consistent format every cycle.
+
+## Fixed Camera Time-Lapse for Investor Reporting
+Logistics and industrial park investors require consistent visual evidence of construction progress. Producing this manually consumes project management time and produces inconsistent output.
+
+## The Verification Workflow
+1. **Automated Capture:** Fixed cameras installed at key vantage points from mobilisation
+2. **Structured Analysis:** Continuous time-lapse archive from ground-break to commissioning
+3. **Verified Output:** Drone milestone captures tied to investor reporting cycles
+4. **Decision-Ready Delivery:** Studio IQ packages the visual record into a structured progress update
+
+---
+> ### Ready to Upgrade Your Workflow?
+> See how YelloSKYE delivers verified ground truth for this exact scenario.
+> 👉 [**Book a 15-Minute Walkthrough**](/book-demo)</div></details>
+</div>
+
+<div class="use-case-card">
+  <div class="uc-header"><h2 class="uc-title">Contractor Performance Benchmarking Across Sites</h2><span class="uc-id">UC-44</span></div>
+  <div class="ai-metadata">
+    <div class="meta-grid">
+      <div class="meta-item"><strong>Industry</strong> <span class="tag">Real Estate</span></div>
+      <div class="meta-item"><strong>Module</strong> <span class="tag">DEX</span></div>
+      <div class="meta-item"><strong>Persona</strong> <span class="tag">CXO</span> <span class="tag">Managing Director</span></div>
+      <div class="meta-item"><strong>Verified Metrics</strong> Independently verified ground truth, reduced manual effort</div>
+    </div>
+    <div class="meta-item"><strong>AI Deep Search Tags</strong> <span class="deep-tags">contractor performance benchmarking across sites, dex deployment, real estate, ground truth verification, site intelligence, construction monitoring.</span></div>
+  </div>
+  <details><summary>View Full End-to-End Copy</summary><div class="content-body">> ### Executive Summary
+> * **The Context:** Developers running multiple simultaneous projects with different contractors have no objective basis for comparing performance. Contractor self-reporting varies in format and reliability — making it impossible to identify who is consistently on time.
+> * **The Solution:** Deploying DEX to standardised aerial capture protocol across all active projects, with progress metrics generated from verified drone data — not contractor reports.
+> * **The ROI:** Contractor performance is measured objectively across every project. The developer enters contract negotiations with verified data, not subjective impressions.
+
+## Contractor Performance Benchmarking Across Sites
+Developers running multiple simultaneous projects with different contractors have no objective basis for comparing performance. Contractor self-reporting varies in format and reliability — making it impossible to identify who is consistently on time.
+
+## The Verification Workflow
+1. **Automated Capture:** Standardised aerial capture protocol across all active projects
+2. **Structured Analysis:** Progress metrics generated from verified drone data — not contractor reports
+3. **Verified Output:** Side-by-side S-curve comparison across contractors in the DEX portfolio dashboard
+4. **Decision-Ready Delivery:** Historical performance record usable in future contract negotiations
+
+---
+> ### Ready to Upgrade Your Workflow?
+> See how YelloSKYE delivers verified ground truth for this exact scenario.
+> 👉 [**Book a 15-Minute Walkthrough**](/book-demo)</div></details>
+</div>
+
+<div class="use-case-card">
+  <div class="uc-header"><h2 class="uc-title">Stockpile and Material Volume Tracking</h2><span class="uc-id">UC-45</span></div>
+  <div class="ai-metadata">
+    <div class="meta-grid">
+      <div class="meta-item"><strong>Industry</strong> <span class="tag">Infrastructure</span> <span class="tag">EPC</span></div>
+      <div class="meta-item"><strong>Module</strong> <span class="tag">Survey IQ</span></div>
+      <div class="meta-item"><strong>Persona</strong> <span class="tag">ENG</span> <span class="tag">Commercial Head</span></div>
+      <div class="meta-item"><strong>Verified Metrics</strong> 99.9%, 5×</div>
+    </div>
+    <div class="meta-item"><strong>AI Deep Search Tags</strong> <span class="deep-tags">stockpile and material volume tracking, survey iq deployment, infrastructure epc, ground truth verification, site intelligence, construction monitoring.</span></div>
+  </div>
+  <details><summary>View Full End-to-End Copy</summary><div class="content-body">> ### Executive Summary
+> * **The Context:** Construction sites manage large stockpiles where quantity claims are routinely disputed. Manual measurement produces estimates with ±15% error — resulting in billing disputes and inventory mismanagement.
+> * **The Solution:** Deploying Survey IQ to drone-based volumetric surveys of all stockpiles on a defined cycle, with automated volume calculations with ±2% accuracy.
+> * **The ROI:** Material quantities are independently verified. Billing disputes over stockpile volumes are eliminated.
+
+## Stockpile and Material Volume Tracking
+Construction sites manage large stockpiles where quantity claims are routinely disputed. Manual measurement produces estimates with ±15% error — resulting in billing disputes and inventory mismanagement.
+
+## The Verification Workflow
+1. **Automated Capture:** Drone-based volumetric surveys of all stockpiles on a defined cycle
+2. **Structured Analysis:** Automated volume calculations with ±2% accuracy
+3. **Verified Output:** Change detection between cycles tracking consumption and replenishment
+4. **Decision-Ready Delivery:** Inventory report generated automatically per survey cycle
+
+---
+> ### Ready to Upgrade Your Workflow?
+> See how YelloSKYE delivers verified ground truth for this exact scenario.
+> 👉 [**Book a 15-Minute Walkthrough**](/book-demo)</div></details>
+</div>
+
+<div class="use-case-card">
+  <div class="uc-header"><h2 class="uc-title">Substation and Switchyard Inspection</h2><span class="uc-id">UC-46</span></div>
+  <div class="ai-metadata">
+    <div class="meta-grid">
+      <div class="meta-item"><strong>Industry</strong> <span class="tag">Power</span> <span class="tag">Industrial</span></div>
+      <div class="meta-item"><strong>Module</strong> <span class="tag">Inspect IQ</span></div>
+      <div class="meta-item"><strong>Persona</strong> <span class="tag">O&amp;M Manager</span> <span class="tag">Asset Owner</span></div>
+      <div class="meta-item"><strong>Verified Metrics</strong> Independently verified ground truth, reduced manual effort</div>
+    </div>
+    <div class="meta-item"><strong>AI Deep Search Tags</strong> <span class="deep-tags">substation and switchyard inspection, inspect iq deployment, power industrial, ground truth verification, site intelligence, construction monitoring.</span></div>
+  </div>
+  <details><summary>View Full End-to-End Copy</summary><div class="content-body">> ### Executive Summary
+> * **The Context:** Substation equipment requires periodic inspection, but manual inspection of elevated equipment and live switchyards carries personnel risk. Thermal anomalies indicating equipment stress are invisible to standard visual checks.
+> * **The Solution:** Deploying Inspect IQ to drone-based close-range imaging of all substation structures and equipment, with thermal imaging identifying hotspots on transformers, insulators, and connections.
+> * **The ROI:** Substation inspection coverage increases without personnel entering live equipment zones. Thermal anomalies are detected before they cause failure events.
+
+## Substation and Switchyard Inspection
+Substation equipment requires periodic inspection, but manual inspection of elevated equipment and live switchyards carries personnel risk. Thermal anomalies indicating equipment stress are invisible to standard visual checks.
+
+## The Verification Workflow
+1. **Automated Capture:** Drone-based close-range imaging of all substation structures and equipment
+2. **Structured Analysis:** Thermal imaging identifying hotspots on transformers, insulators, and connections
+3. **Verified Output:** Geo-tagged issue log with severity classification
+4. **Decision-Ready Delivery:** Time-series archive tracking equipment condition across inspection cycles
+
+---
+> ### Ready to Upgrade Your Workflow?
+> See how YelloSKYE delivers verified ground truth for this exact scenario.
+> 👉 [**Book a 15-Minute Walkthrough**](/book-demo)</div></details>
+</div>
+
+<div class="use-case-card">
+  <div class="uc-header"><h2 class="uc-title">As-Built Verification for Hardened Structures</h2><span class="uc-id">UC-47</span></div>
+  <div class="ai-metadata">
+    <div class="meta-grid">
+      <div class="meta-item"><strong>Industry</strong> <span class="tag">Defence</span> <span class="tag">Government</span></div>
+      <div class="meta-item"><strong>Module</strong> <span class="tag">BIM IQ</span></div>
+      <div class="meta-item"><strong>Persona</strong> <span class="tag">ENG</span> <span class="tag">BIM Manager</span></div>
+      <div class="meta-item"><strong>Verified Metrics</strong> Independently verified ground truth, reduced manual effort</div>
+    </div>
+    <div class="meta-item"><strong>AI Deep Search Tags</strong> <span class="deep-tags">as-built verification for hardened structures, bim iq deployment, defence government, ground truth verification, site intelligence, construction monitoring.</span></div>
+  </div>
+  <details><summary>View Full End-to-End Copy</summary><div class="content-body">> ### Executive Summary
+> * **The Context:** Hardened defence structures are built to precise specifications where deviation from design carries operational and safety consequences. Without systematic as-built verification, deviations are discovered only under load.
+> * **The Solution:** Deploying BIM IQ to point cloud capture of completed structures at handover, with automated overlay against approved structural drawings.
+> * **The ROI:** Structural compliance is verified at handover, not assumed. Deviations are documented and rectified before the structure enters operational use.
+
+## As-Built Verification for Hardened Structures
+Hardened defence structures are built to precise specifications where deviation from design carries operational and safety consequences. Without systematic as-built verification, deviations are discovered only under load.
+
+## The Verification Workflow
+1. **Automated Capture:** Point cloud capture of completed structures at handover
+2. **Structured Analysis:** Automated overlay against approved structural drawings
+3. **Verified Output:** Deviation report by element, location, and severity
+4. **Decision-Ready Delivery:** Permanent as-built archive in DEX for the structure's full operational life
+
+---
+> ### Ready to Upgrade Your Workflow?
+> See how YelloSKYE delivers verified ground truth for this exact scenario.
+> 👉 [**Book a 15-Minute Walkthrough**](/book-demo)</div></details>
+</div>
+
+<div class="use-case-card">
+  <div class="uc-header"><h2 class="uc-title">Construction-to-Marketing Visual Pipeline</h2><span class="uc-id">UC-48</span></div>
+  <div class="ai-metadata">
+    <div class="meta-grid">
+      <div class="meta-item"><strong>Industry</strong> <span class="tag">Cross-Industry</span></div>
+      <div class="meta-item"><strong>Module</strong> <span class="tag">Studio IQ</span></div>
+      <div class="meta-item"><strong>Persona</strong> <span class="tag">PMO</span> <span class="tag">Quality Control</span></div>
+      <div class="meta-item"><strong>Verified Metrics</strong> Independently verified ground truth, reduced manual effort</div>
+    </div>
+    <div class="meta-item"><strong>AI Deep Search Tags</strong> <span class="deep-tags">construction-to-marketing visual pipeline, studio iq deployment, cross-industry, ground truth verification, site intelligence, construction monitoring.</span></div>
+  </div>
+  <details><summary>View Full End-to-End Copy</summary><div class="content-body">> ### Executive Summary
+> * **The Context:** Developers invest significantly in marketing completed projects, but photography is typically produced in a single post-completion session — missing the construction journey that builds buyer confidence.
+> * **The Solution:** Deploying Studio IQ to continuous aerial and interior capture from mobilisation to handover, with studio IQ curates a construction-to-completion visual archive.
+> * **The ROI:** Marketing teams have a professional visual library from day one of construction — reducing post-completion photography cost and providing a narrative that standard marketing photography cannot replicate.
+
+## Construction-to-Marketing Visual Pipeline
+Developers invest significantly in marketing completed projects, but photography is typically produced in a single post-completion session — missing the construction journey that builds buyer confidence.
+
+## The Verification Workflow
+1. **Automated Capture:** Continuous aerial and interior capture from mobilisation to handover
+2. **Structured Analysis:** Studio IQ curates a construction-to-completion visual archive
+3. **Verified Output:** High-resolution imagery cleared for marketing, print, and digital use
+4. **Decision-Ready Delivery:** Time-lapse sequences showing the full development progression
+
+---
+> ### Ready to Upgrade Your Workflow?
+> See how YelloSKYE delivers verified ground truth for this exact scenario.
+> 👉 [**Book a 15-Minute Walkthrough**](/book-demo)</div></details>
+</div>
+</div>
+
+<button id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">↑</button>
+
 <script>
 function filterUseCases() {
   let input = document.getElementById('searchInput').value.toLowerCase();
   let cards = document.getElementsByClassName('use-case-card');
+  let visibleCount = 0;
+
+  let activePills = document.querySelectorAll('.filter-pill.active');
+  let activeFilters = Array.from(activePills).map(p => p.dataset.filterValue.toLowerCase());
 
   for (let i = 0; i < cards.length; i++) {
-    let searchContent = cards[i].querySelector('.ai-metadata').innerText.toLowerCase() + 
+    let searchContent = cards[i].querySelector('.ai-metadata').innerText.toLowerCase() +
                         cards[i].querySelector('.uc-title').innerText.toLowerCase();
 
-    if (searchContent.includes(input)) {
-      cards[i].style.display = ""; 
+    let matchesSearch = !input || searchContent.includes(input);
+    let matchesFilters = activeFilters.length === 0 || activeFilters.some(f => searchContent.includes(f));
+
+    if (matchesSearch && matchesFilters) {
+      cards[i].style.display = "";
+      visibleCount++;
     } else {
-      cards[i].style.display = "none"; 
+      cards[i].style.display = "none";
     }
   }
+
+  updateResultsUI(visibleCount, input, activePills.length);
 }
+
+function togglePill(pill) {
+  pill.classList.toggle('active');
+  filterUseCases();
+}
+
+function clearAllFilters() {
+  document.getElementById('searchInput').value = '';
+  document.querySelectorAll('.filter-pill.active').forEach(p => p.classList.remove('active'));
+  filterUseCases();
+}
+
+function updateResultsUI(count, searchInput, activeFilterCount) {
+  document.getElementById('resultsNum').textContent = count;
+  document.getElementById('noResults').classList.toggle('visible', count === 0);
+  document.getElementById('clearFiltersBtn').classList.toggle('visible', !!searchInput || activeFilterCount > 0);
+}
+
+window.addEventListener('scroll', function() {
+  const btn = document.getElementById('backToTop');
+  if (window.scrollY > 400) {
+    btn.classList.add('visible');
+  } else {
+    btn.classList.remove('visible');
+  }
+});
 </script>
 </body>
 </html>
